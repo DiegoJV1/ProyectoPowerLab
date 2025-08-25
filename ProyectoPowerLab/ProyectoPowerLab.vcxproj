@@ -123,7 +123,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cliente.cpp" />
+    <ClCompile Include="Gimnasio.cpp" />
+    <ClCompile Include="Instructor.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Medicion.cpp" />
+    <ClCompile Include="Rutina.cpp" />
+    <ClCompile Include="Sucursal.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Cliente.h" />
+    <ClInclude Include="Gimnasio.h" />
+    <ClInclude Include="Instructor.h" />
+    <ClInclude Include="Medicion.h" />
+    <ClInclude Include="Rutina.h" />
+    <ClInclude Include="Sucursal.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
