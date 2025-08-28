@@ -4,13 +4,13 @@ using namespace std;
 class Instructor
 {
 private:
-	int cedula, telefono, fechaNacimiento;
-	string nombre;
+	int  telefono, fechaNacimiento;
+	string nombre, cedula;
 	bool especilidad;
 public:
 	Instructor();
-	Instructor(int, int, int, string, bool);
-	void setCedula(int);
+	Instructor(int, int, string, string, bool);
+	void setCedula(string);
 	void setTelefono(int);
 	void setFechaNacimiento(int);
 	void setNombre(string);
