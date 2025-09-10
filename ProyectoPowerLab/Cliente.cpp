@@ -86,6 +86,51 @@ Medicion* Cliente:: buscarPorFecha(Fecha* aux) {
 		}
 	}
 }
+Medicion* Cliente::buscarMasActual() {
+	return historialMedicion[can - 1];
+}
 
+string Cliente::getNombreCliente() {
+	return nombreCliente;
+}
+string Cliente::getCedulaCliente() {
+	return cedulaCliente;
+}
+string Cliente::getTelefonoCliente() {
+	return telefonoCliente;
+}
+string Cliente::getCorreoCliente() {
+	return correoCliente;
+}
+string Cliente::getGeneroCliente() {
+	return generoCliente;
+}
+Instructor* Cliente:: getCoach() {
+	return coach;
+}
+Rutina* Cliente::getRutinaCliente() {
+	return rutinaCliente;
+}
 
+string Cliente::toString() {
+	stringstream ss;
+	ss << "Nombre:" << nombreCliente << endl;
+	ss << "Cedula:" << cedulaCliente << endl;
+	ss << "Telefono:" << telefonoCliente << endl;
+	ss << "Correo Electronico:" << correoCliente << endl;
+	ss << "Genero:" << generoCliente << endl;
+	ss << "------------------------------------------------" << endl;
+	ss << "Coach:" << endl;
+	ss << coach->toString() << endl;
+	ss<< "------------------------------------------------" << endl;
+	ss << "Rutina:" << endl;
+	ss << rutinaCliente->toString() << endl;
+	ss << "------------------------------------------------" << endl;
+	ss << "Registro de Mediciones:" << endl;
+	for (int i = 0; i < can; i++) {
+		ss << historialMedicion[i]->toString() << endl << endl;
+	}
+	ss << "------------------------------------------------" << endl;
+	return ss.str();
+}
 

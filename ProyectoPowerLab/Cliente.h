@@ -3,6 +3,7 @@
 #include "Instructor.h"
 #include"Medicion.h"
 #include"Rutina.h"
+#include"Fecha.h"
 using namespace std;
 
 class Cliente{
@@ -24,15 +25,16 @@ public:
 	void setRutina(Rutina*);
 
 	void insertarMedicion(Medicion*);
-	Medicion* buscarPorFecha(int, int, int);
+	Medicion* buscarPorFecha(Fecha*);
+	Medicion* buscarMasActual();
 
 	string getNombreCliente();
 	string getCedulaCliente();
 	string getTelefonoCliente();
 	string getCorreoCliente();
 	string getGeneroCliente();
-	string getCoach();
-	string getRutinaCliente();
+	Instructor* getCoach();
+	Rutina* getRutinaCliente();
 
 	string toString();
 

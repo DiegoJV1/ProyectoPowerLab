@@ -5,7 +5,7 @@ using namespace std;
 
 GrupoMuscular::GrupoMuscular() {
 	can = 0;
-	tam = 0;
+	tam = 200;
 	gm = new Ejercicio* [tam];
 }
 void GrupoMuscular::definirTamano(int tamano) {
