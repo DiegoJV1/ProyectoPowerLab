@@ -26,16 +26,29 @@ void Instructor::insertarCliente(Cliente* aux) {
 	}
 }
 void Instructor::eliminarCliente(string cedaux) {
+	int pos = -1;
+
 	for (int i = 0; i < canClientes; i++) {
-		if (clientes[i]->getCedulaCliente() == cedaux) {
-			for (int j = i; j < canClientes + 1; j++) {
-				clientes[j] = clientes[j + 1];
-				canClientes--;
-			}
+		if (clientes[i] != nullptr && clientes[i]->getCedulaCliente() == cedaux) {
+			pos = i;
+			break; 
 		}
-		else {
-			cout << "ERROR-Cliente no encontrado";
+	}
+
+	if (pos != -1) {
+		delete clientes[pos];
+		clientes[pos] = nullptr;
+		for (int i = pos; i < canClientes - 1; i++) {
+			clientes[i] = clientes[i + 1];
 		}
+
+		clientes[canClientes - 1] = nullptr;
+		canClientes--; 
+
+		cout << "Cliente con cedula " << cedaux << " eliminado exitosamente." << endl;
+	}
+	else {
+		cout << "ERROR: Cliente con cedula " << cedaux << " no encontrado." << endl;
 	}
 }
 void Instructor::setNombreCoach(string nomaux) {
