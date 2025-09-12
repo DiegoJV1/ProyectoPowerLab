@@ -1,5 +1,5 @@
 #include "Medicion.h"
-
+//Hola
 Medicion::Medicion() {
 	fechaMedicion = nullptr;
 	medidas = nullptr;
