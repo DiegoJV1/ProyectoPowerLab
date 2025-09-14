@@ -5,20 +5,16 @@ using namespace std;
 
 GrupoMuscular::GrupoMuscular() {
 	can = 0;
-	tam = 200;
+	tam = 20;
 	gm = new Ejercicio* [tam];
-}
-void GrupoMuscular::definirTamano(int tamano) {
-	this->tam = tamano;
-	can = 0;
-	gm = new Ejercicio * [tam];
 	for (int i = 0; i < tam; i++) {
-		gm[i] = new Ejercicio();
+		gm[i] = nullptr;
 	}
 }
 GrupoMuscular::~GrupoMuscular() {
 	for (int i = 0; i < can; i++) {
 		delete gm[i];
+		gm[i] = nullptr;
 	}
 	delete[] gm;
 }	

@@ -1,4 +1,17 @@
 #pragma once
+#include"Sucursal.h"
+#include<string>
+using namespace std;
 class Gimnasio{
+private:
+	Sucursal** sucursales;
+	int can, tam;
+	string nombre;
+public:
+	Gimnasio();
+	void setNombre(string);
+	string getNombre();
+	void insertarSucursal(Sucursal*);
+	string toString();
 };
 

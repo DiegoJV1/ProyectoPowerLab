@@ -3,20 +3,62 @@
 #include<sstream>
 using namespace std;
 Rutina::Rutina() {
-	piernas = new GrupoMuscular();
-	pecho=new GrupoMuscular();
-	bicep = new GrupoMuscular();
-	tricep = new GrupoMuscular();
-	espalda = new GrupoMuscular();
-	hombro = new GrupoMuscular();
+	pecho = nullptr;
+	tricep = nullptr;
+	bicep = nullptr;
+	pierna = nullptr;
+	espalda = nullptr;
+	hombro = nullptr;
 }
-void Rutina::editarRutina() {
-	string seguir = "si";
-	while (seguir == "si" || seguir == "Si" || seguir == "SI" || seguir == "sI") {
-		cout << "-----Menu de Edicion de Rutina-----" << endl;
-		cout << "Grupos Musculares:" << endl;
-		cout << "1-Piernas\n" << "2-Pecho\n" << "3-Bicep\n" << "4-Tricep\n" << "5-Espalda\n" << "6-Hombro\n\n";
+void Rutina::setPecho(GrupoMuscular* aux) {
+	this->pecho=aux;
+}
+void Rutina::setTricep(GrupoMuscular* aux) {
+	this->tricep = aux;
+}
+void Rutina::setBicep(GrupoMuscular* aux) {
+	this->bicep = aux;
+}
+void Rutina::setPierna(GrupoMuscular* aux) {
+	this->pierna = aux;
+}
+void Rutina::setEspalda(GrupoMuscular* aux) {
+	this->espalda = aux;
+}
+void Rutina:: setHombro(GrupoMuscular* aux) {
+	this->hombro = aux;
+}
 
-	}
-	
+GrupoMuscular* Rutina::getPecho() {
+	return pecho;
+}
+GrupoMuscular* Rutina::getTricep() {
+	return tricep;
+}
+GrupoMuscular* Rutina::getBicep() {
+	return bicep;
+}
+GrupoMuscular* Rutina::getPierna() {
+	return pierna;
+}
+GrupoMuscular* Rutina::getEspalda() {
+	return espalda;
+}
+GrupoMuscular* Rutina::getHombro() {
+	return hombro;
+}
+
+string Rutina::toString() {
+	stringstream ss;
+	ss << "----Rutina de Ejercicios----" << endl;
+	ss << "Pecho y Tricep:" << endl;
+	ss << pecho->toString() << endl << endl;
+	ss << tricep->toString() << endl << endl;
+	ss << "Bicep:" << endl;
+	ss << bicep->toString() << endl << endl;
+	ss << "Piernas:" << endl;
+	ss << pierna->toString() << endl << endl;
+	ss << "Espalda:" << endl;
+	ss << espalda->toString() << endl << endl;
+	return ss.str();
 }

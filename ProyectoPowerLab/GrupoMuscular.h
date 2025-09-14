@@ -7,7 +7,6 @@ private:
 	Ejercicio** gm=nullptr;
 public:
 	GrupoMuscular();
-	void definirTamano(int);
 	~GrupoMuscular();
 	void insertarEjercicio(Ejercicio*);
 	void eliminarEjercicio(string);
