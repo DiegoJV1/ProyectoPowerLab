@@ -27,11 +27,21 @@ void Gimnasio::insertarSucursal(Sucursal* aux) {
 		cout << "ERROR-Vector lleno";
 	}
 }
+Sucursal* Gimnasio:: getSucursal(int cod) {
+	for (int i = 0; i < can; i++) {
+		if (sucursales[i]!=nullptr && sucursales[i]->getCodigo() == cod) {
+			return sucursales[i];
+		}
+	}
+	return nullptr;
+}
+
 string Gimnasio::toString() {
 	stringstream ss;
 	ss << "Nombre: " << nombre << endl;
 	ss << "Sucursales: " << endl<<endl;
 	for (int i = 0; i < can; i++) {
+		ss << "Sucursal numero " << i << endl;
 		ss << sucursales[i]->toString() << endl << endl;
 	}
 	return ss.str();

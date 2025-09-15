@@ -12,6 +12,7 @@ public:
 	void setNombre(string);
 	string getNombre();
 	void insertarSucursal(Sucursal*);
+	Sucursal* getSucursal(int);
 	string toString();
 };
 

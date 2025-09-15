@@ -71,31 +71,32 @@ void Sucursal::setCliente(Cliente* clie) {
 }
 
 
-
+Instructor*Sucursal:: getInstructor(string ced) {
+    for (int i = 0; i < canInstructores; i++) {
+        if (instructores[i] != nullptr && instructores[i]->getCedulaCoach() == ced) {
+            return instructores[i];
+        }
+    }
+    return nullptr;
+}
 int Sucursal::getCodigo() {
     return codigo;
 }
-
 int Sucursal::getTelefono() {
     return telefono;
 }
-
 string Sucursal::getProvincia() {
     return provincia;
 }
-
 string Sucursal::getCanton() {
     return canton;
 }
-
 string Sucursal::getCorreoElectronico() {
     return correoElectronico;
 }
-
 int Sucursal::getCanInstructores() {
     return canInstructores;
 }
-
 int Sucursal::getCanClientes() {
     return canClientes;
 }

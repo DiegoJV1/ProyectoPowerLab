@@ -28,6 +28,7 @@ public:
 	void setInstructor(Instructor*);
 	void setCliente(Cliente*);
 
+	Instructor* getInstructor(string);
 	int getCodigo();
 	int getTelefono();
 	string getProvincia();
