@@ -5,6 +5,7 @@ Sucursal::Sucursal() {
     provincia = "Sin definir";
     canton = "Sin definir";
     correoElectronico = "Sin definir";
+    clases = new ClaseGrupal * [8];
     instructores = new Instructor * [10];
     clientes = new Cliente * [1000];
 
@@ -14,7 +15,10 @@ Sucursal::Sucursal() {
     for (int i = 0; i < 1000; ++i) {
         clientes[i] = nullptr;
     }
-
+    for (int i = 0; i < 8; ++i) {
+        clases[i] = nullptr;
+    }
+    canClases = 0;
     canInstructores = 0;
     canClientes = 0;
 }
@@ -33,16 +37,29 @@ Sucursal::Sucursal(int cod, int tel, string prov, string can, string correo) {
     for (int i = 0; i < 1000; ++i) {
         clientes[i] = nullptr;
     }
+    for (int i = 0; i < 8; ++i) {
+        clases[i] = nullptr;
+    }
 }
 Sucursal::~Sucursal() {
+    for (int i = 0; i < 8; ++i) {
+        delete clases[i];
+        clases[i] = nullptr;
+    }
     for (int i = 0; i < 10; ++i) {
         delete instructores[i];
+        instructores[i] = nullptr;
     }
     for (int i = 0; i < 1000; ++i) {
         delete clientes[i];
+        clientes[i] = nullptr;
     }
     delete[] instructores;
     delete[] clientes;
+    delete[] clases;
+    canClases = 0;
+    canInstructores = 0;
+    canClientes = 0;
 }
 
 
@@ -80,12 +97,29 @@ void Sucursal::setCliente(Cliente* clie) {
          cout << "Error: No se pueden agregar más clientes." << std::endl;
     }
 }
+void Sucursal::setClaseGrupal(ClaseGrupal* claseaux) {
+    if (canClases < 8) {
+        clases[canClases] = claseaux;
+        canClases++;
+    }
+    else {
+        cout << "Error: No se pueden agregar más clases." << std::endl;
+    }
+}
 
 
 Instructor*Sucursal:: getInstructor(string ced) {
     for (int i = 0; i < canInstructores; i++) {
         if (instructores[i] != nullptr && instructores[i]->getCedulaCoach() == ced) {
             return instructores[i];
+        }
+    }
+    return nullptr;
+}
+ClaseGrupal* Sucursal::getClaseGrupal(string nom) {
+    for (int i = 0; i < canClases; i++) {
+        if (clases[i] != nullptr && clases[i]->getNombreClaseGrupal() == nom) {
+            return clases[i];
         }
     }
     return nullptr;
@@ -152,6 +186,16 @@ string Sucursal::toString() {
     }
 
     s << "-----------------------------------" << endl;
+
+    s << "\n--- ClasesGrupales (" << canClases << " de 8) ---" << endl;
+    if (canClases > 0) {
+        for (int i = 0; i < canClases; i++) {
+            s << clases[i]->toString() << endl;
+        }
+    }
+    else {
+        s << "No hay clases registradas." << endl;
+    }
 
     return s.str();
 }

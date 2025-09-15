@@ -4,6 +4,7 @@
 #include <sstream>
 #include "Instructor.h"
 #include "Cliente.h"
+#include"ClaseGrupal.h"
 using namespace std;
 class Sucursal{
 private:
@@ -11,8 +12,9 @@ private:
 	string provincia, canton, correoElectronico;
 	Instructor** instructores;
 	Cliente** clientes;
-	int canInstructores = 0;
-	int canClientes = 0;
+	int canInstructores, canClientes, canClases;
+	ClaseGrupal** clases;
+
 public:
 	Sucursal();
 	Sucursal(int, int, string, string, string);
@@ -27,6 +29,7 @@ public:
 	void setCorreoElectronico(string);
 	void setInstructor(Instructor*);
 	void setCliente(Cliente*);
+	void setClaseGrupal(ClaseGrupal*);
 
 	Instructor* getInstructor(string);
 	int getCodigo();
@@ -37,6 +40,7 @@ public:
 	int getCanInstructores();
 	int getCanClientes();
 	Cliente* getCliente(string);
+	ClaseGrupal* getClaseGrupal(string);
 
 	string toString();
 	string clientesSucursal();
