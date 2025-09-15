@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ClaseGrupal.cpp" />
     <ClCompile Include="Cliente.cpp" />
     <ClCompile Include="Ejercicio.cpp" />
     <ClCompile Include="Fecha.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="Sucursal.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClaseGrupal.h" />
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="Ejercicio.h" />
     <ClInclude Include="Fecha.h" />

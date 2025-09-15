@@ -20,7 +20,7 @@ public:
 	void setCedulaCliente(string);
 	void setTelefonoCliente(string);
 	void setCorreoCliente(string);
-	void setGeneroCliente(string);
+	void setGeneroCliente(char);
 	void setCoach(Instructor*);
 	void setRutina(Rutina*);
 

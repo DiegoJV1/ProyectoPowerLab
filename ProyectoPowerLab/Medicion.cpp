@@ -55,24 +55,31 @@ void Medicion::setMedidas(MedidasCorporales* m) {
 	medidas = m;
 }
 void Medicion::setGeneroPaciente(char gen) {
-	this->generoPaciente = gen;
+	if (gen == 'H') {
+		this->generoPaciente = "hombre";
+	}
+	else {
+		this->generoPaciente = "mujer";
+	}
+	
 }
 void Medicion::setEjercita(string aux) {
 	this->ejercita = aux;
 }
-
 
 void Medicion::calculoIMC() {
 	IMC = peso / (altura * altura);
 }
 void Medicion::calculoIngestaProteina() {
 	ingestaProteinaMinima = 0.8 * peso;
-	ingestaProteinaMaximo = 0.8 * peso;
-	if (generoPaciente == '' && ejercita == "si" || ejercita == "SI" || ejercita == "Si" || ejercita == "sI") {
-		
+	ingestaProteinaMaxima = 0.8 * peso;
+	if (generoPaciente =="hombre" && ejercita == "si" || ejercita == "SI" || ejercita == "Si" || ejercita == "sI") {
+		ingestaProteinaMinima = 1.7 * peso;
+		ingestaProteinaMaxima = 2.5 * peso;
 	}
 	else if (generoPaciente == "mujer" && ejercita == "si" || ejercita == "SI" || ejercita == "Si" || ejercita == "sI") {
-		
+		ingestaProteinaMinima = 1.6 * peso;
+		ingestaProteinaMaxima = 1.8 * peso;
 	}
 }
 void Medicion::calculoVasosAgua() {
@@ -156,9 +163,13 @@ int Medicion::getVasosAgua() {
 	calculoVasosAgua();
 	return vasosAgua;
 }
-float Medicion::getIngestaProteina() {
+float Medicion::getIngestaProteinaMaxima() {
 	calculoIngestaProteina();
-	return ingestaProteina;
+	return ingestaProteinaMaxima;
+}
+float Medicion::getIngestaProteinaMinima() {
+	calculoIngestaProteina();
+	return ingestaProteinaMinima;
 }
 string Medicion::getEjercita() {
 	return ejercita;
@@ -189,7 +200,12 @@ string Medicion::toString() {
 	calculoVasosAgua();
 	s << "Vasos de agua diarios (250ml): " << vasosAgua << endl;
 	calculoIngestaProteina();
-	s << "Ingesta de proteina diaria: " << ingestaProteina << endl;
+	if (ingestaProteinaMinima != ingestaProteinaMaxima) {
+		s << "Ingesta de proteina diaria aproximada: " << ingestaProteinaMinima << "-" << ingestaProteinaMaxima << endl;
+	}
+	else {
+		s << "Ingesta de proteina diaria aproximada: " << ingestaProteinaMinima << endl;
+	}
 
 	 if (medidas != nullptr) {
 	     s << "\nMedidas corporales:" << endl;

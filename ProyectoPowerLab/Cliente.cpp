@@ -53,8 +53,13 @@ void Cliente::setTelefonoCliente(string tel) {
 void Cliente::setCorreoCliente(string correo) {
 	this->correoCliente = correo;
 }
-void Cliente::setGeneroCliente(string gen) {
-	this->generoCliente = gen;
+void Cliente::setGeneroCliente(char gen) {
+	if (gen == 'H') {
+		this->generoCliente = "hombre";
+	}
+	else {
+		this->generoCliente = "mujer";
+	}
 }
 void Cliente::setCoach(Instructor* aux) {
 	this->coach = aux;
