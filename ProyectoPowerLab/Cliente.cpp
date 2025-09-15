@@ -9,6 +9,7 @@ Cliente::Cliente() {
 	telefonoCliente = "0";
 	correoCliente = "Sin definir";
 	generoCliente = "Sin Definir";
+	contadorClases = 0;
 
 	coach = nullptr;
 	rutinaCliente = nullptr;
@@ -27,6 +28,7 @@ Cliente::~Cliente() {
 	telefonoCliente = "0";
 	correoCliente = "Sin definir";
 	generoCliente = "Sin Definir";
+	contadorClases = 0;
 
 	delete coach;
 	coach = nullptr;
@@ -41,6 +43,9 @@ Cliente::~Cliente() {
 	can = 0;
 }
 
+void Cliente::setContadorClases(int num) {
+	this->contadorClases = num;
+}
 void Cliente::setNombreCliente(string nom) {
 	this->nombreCliente = nom;
 }
@@ -95,6 +100,9 @@ Medicion* Cliente::buscarMasActual() {
 	return historialMedicion[can - 1];
 }
 
+int Cliente::getContadorClases() {
+	return contadorClases;
+}
 string Cliente::getNombreCliente() {
 	return nombreCliente;
 }
@@ -124,6 +132,7 @@ string Cliente::toString() {
 	ss << "Telefono:" << telefonoCliente << endl;
 	ss << "Correo Electronico:" << correoCliente << endl;
 	ss << "Genero:" << generoCliente << endl;
+	ss << "Cantidad de Clases inscritas: " << contadorClases << endl;
 	ss << "------------------------------------------------" << endl;
 	ss << "Coach:" << endl;
 	ss << coach->toString() << endl;

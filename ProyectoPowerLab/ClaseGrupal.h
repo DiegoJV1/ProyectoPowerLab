@@ -13,7 +13,7 @@ private:
 public:
 	ClaseGrupal();
 	~ClaseGrupal();
-	void insertarCliente(Cliente*);
+	bool insertarCliente(Cliente*);
 	void modificarCapacidadClase(int);
 	void setHorario(Horario*);
 

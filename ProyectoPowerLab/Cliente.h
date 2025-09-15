@@ -13,6 +13,7 @@ private:
 	int can, tam;
 	Medicion** historialMedicion;
 	Rutina* rutinaCliente;
+	int contadorClases;
 public:
 	Cliente();
 	~Cliente();
@@ -23,11 +24,13 @@ public:
 	void setGeneroCliente(char);
 	void setCoach(Instructor*);
 	void setRutina(Rutina*);
+	void setContadorClases(int);
 
 	void insertarMedicion(Medicion*);
 	Medicion* buscarPorFecha(Fecha*);
 	Medicion* buscarMasActual();
 
+	int getContadorClases();
 	string getNombreCliente();
 	string getCedulaCliente();
 	string getTelefonoCliente();

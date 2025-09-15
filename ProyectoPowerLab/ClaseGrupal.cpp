@@ -21,13 +21,15 @@ ClaseGrupal::~ClaseGrupal() {
 	delete[] inscritos;
 	canInscritos = 0;
 }
-void ClaseGrupal::insertarCliente(Cliente* aux) {
-	if (canInscritos < capacidad) {
+bool ClaseGrupal::insertarCliente(Cliente* aux) {
+	if (canInscritos < capacidad && aux->getContadorClases()<=3) {
 		inscritos[canInscritos] = aux;
 		canInscritos++;
+		aux->setContadorClases(aux->getContadorClases() + 1);
+		return true;
 	}
 	else {
-		cout << "Clase Llena";
+		return false;
 	}
 }
 void ClaseGrupal::setHorario(Horario* aux) {
