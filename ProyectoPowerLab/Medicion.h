@@ -9,7 +9,7 @@ using namespace std;
 class Medicion{
 private:
 	Fecha* fechaMedicion;
-	float peso, altura, porcenGrasa, porcenMusculo, edadMetabolica, porcenGrasaVisceral, IMC, ingestaProteina;
+	float peso, altura, porcenGrasa, porcenMusculo, edadMetabolica, porcenGrasaVisceral, IMC, ingestaProteinaMaxima, ingestaProteinaMinima;
 	MedidasCorporales* medidas;
 	string clasificacionIMC, tipoPaciente, generoPaciente, ejercita;
 	int vasosAgua;
@@ -41,7 +41,8 @@ public:
 	float getEdadMetabolica();
 	float getPorcenGrasaVisceral();
 	float getIMC();
-	float getIngestaProteina();
+	float getIngestaProteinaMaxima();
+	float getIngestaProteinaMinima();
 	int getVasosAgua();
 	string getGeneroPaciente();
 	string getEjercita();
