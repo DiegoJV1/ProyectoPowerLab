@@ -35,7 +35,14 @@ Sucursal* Gimnasio:: getSucursal(int cod) {
 	}
 	return nullptr;
 }
-
+Cliente* Gimnasio::getCliente(string ced) {
+	for (int i = 0; i < can; i++) {
+		if (sucursales[i] != nullptr && sucursales[i]->getCliente(ced)) {
+			return sucursales[i]->getCliente(ced);
+		}
+	}
+	return nullptr;
+}
 string Gimnasio::toString() {
 	stringstream ss;
 	ss << "Nombre: " << nombre << endl;

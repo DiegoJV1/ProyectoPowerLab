@@ -13,6 +13,7 @@ public:
 	string getNombre();
 	void insertarSucursal(Sucursal*);
 	Sucursal* getSucursal(int);
+	Cliente* getCliente(string);
 	string toString();
 };
 
