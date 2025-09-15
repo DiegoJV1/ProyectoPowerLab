@@ -25,7 +25,7 @@ public:
 	void setEdadMetabolica(float);
 	void setPorcenGrasaVisceral(float);
 	void setMedidas(MedidasCorporales*);
-	void setGeneroPaciente(string);
+	void setGeneroPaciente(char);
 	void setEjercita(string);
 	
 	void calculoIMC();

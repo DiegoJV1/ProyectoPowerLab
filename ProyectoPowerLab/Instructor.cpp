@@ -30,8 +30,8 @@ void Instructor::setCorreoCoach(string correoaux) {
 void Instructor::setFechaNacimientoCoach(Fecha* fechaaux) {
 	this->fechaNacimientoCoach = fechaaux;
 }
-void Instructor::setEspecialidadCoach(string espaux) {
-	this->especialidadCoach = espaux;
+void Instructor::setEspecialidadCoach(int espaux) {
+	
 }
 string Instructor::getNombreCoach() {
 	return nombreCoach;

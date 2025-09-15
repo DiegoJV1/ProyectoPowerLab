@@ -6,7 +6,8 @@ using namespace std;
 class Instructor{
 private:
 	Fecha* fechaNacimientoCoach;
-	string nombreCoach, cedulaCoach, telefonoCoach, correoCoach, especialidadCoach;
+	string nombreCoach, cedulaCoach, telefonoCoach, correoCoach;
+	string especialidadCoach;
 	int canClientes, tamClientes;
 public:
 	Instructor();
@@ -16,7 +17,7 @@ public:
 	void setTelefonoCoach(string);
 	void setCorreoCoach(string);
 	void setFechaNacimientoCoach(Fecha*);
-	void setEspecialidadCoach(string);
+	void setEspecialidadCoach(int);
 
 	string getNombreCoach();
 	string getCedulaCoach();

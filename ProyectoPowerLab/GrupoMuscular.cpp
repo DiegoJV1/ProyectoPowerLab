@@ -17,6 +17,8 @@ GrupoMuscular::~GrupoMuscular() {
 	delete[] gm;
 	can = 0;
 }
+
+
 void GrupoMuscular::insertarEjercicio(Ejercicio* aux) {
 	if (can < tam) {
 		gm[can] = aux;

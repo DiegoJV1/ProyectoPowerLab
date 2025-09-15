@@ -33,6 +33,7 @@ Ejercicio* BateriaEjercicios::buscarEjercicio(string aux) {
 			return bateria[i];
 		}
 	}
+	return nullptr;
 }
 string BateriaEjercicios::toString() {
 	stringstream ss;
