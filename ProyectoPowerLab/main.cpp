@@ -2,10 +2,10 @@
 #include"Gimnasio.h"
 using namespace std;
 int main(){
-	Sucursal* s1 = new Sucursal();
-	Gimnasio* g1 = new Gimnasio();
-	g1->insertarSucursal(s1);
-	cout << g1->toString();
+	Cliente* c1;
+	c1 = new Cliente();
+	Instructor* i1;
+	i1 = new Instructor();
 	
 }
 

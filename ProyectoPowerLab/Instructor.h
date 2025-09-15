@@ -1,15 +1,14 @@
 #pragma once
 #include <string>
 #include "Fecha.h"
-#include "Cliente.h"
+
 using namespace std;
-class Instructor
-{
+class Instructor{
 private:
 	Fecha* fechaNacimientoCoach;
 	string nombreCoach, cedulaCoach, telefonoCoach, correoCoach, especialidadCoach;
 	int canClientes, tamClientes;
-	Cliente** clientes;
+	//Cliente** clientes;
 public:
 	Instructor();
 	~Instructor();
@@ -20,8 +19,8 @@ public:
 	void setFechaNacimientoCoach(Fecha*);
 	void setEspecialidadCoach(string);
 
-	void insertarCliente(Cliente*);
-	void eliminarCliente(string);
+	//void insertarCliente(Cliente*);
+	//void eliminarCliente(string);
 
 	string getNombreCoach();
 	string getCedulaCoach();

@@ -11,12 +11,21 @@ Instructor::Instructor() {
 	especialidadCoach= "Sin definir";
 	canClientes = 0;
 	tamClientes = 1000;
-	clientes = new Cliente * [tamClientes];
+	fechaNacimientoCoach = nullptr;
+	/*clientes = new Cliente * [tamClientes];
 	for (int i = 0; i < tamClientes; i++) {
 		clientes[i] = nullptr;
-	}
+	*/
 }
-void Instructor::insertarCliente(Cliente* aux) {
+Instructor::~Instructor() {
+	/*for (int i = 0; i < canClientes; i++) {
+		delete clientes[i];
+		clientes[i] = nullptr;
+	}
+	canClientes = 0;
+	*/
+}
+/*void Instructor::insertarCliente(Cliente* aux) {
 	if (canClientes < tamClientes) {
 		clientes[canClientes] = aux;
 		canClientes++;
@@ -50,7 +59,7 @@ void Instructor::eliminarCliente(string cedaux) {
 	else {
 		cout << "ERROR: Cliente con cedula " << cedaux << " no encontrado." << endl;
 	}
-}
+}*/
 void Instructor::setNombreCoach(string nomaux) {
 	this->nombreCoach = nomaux;
 }
@@ -97,11 +106,11 @@ string Instructor::toString() {
 	ss << "Fecha Nacimiento:" << fechaNacimientoCoach << endl;
 	ss << "Especialidad:" << especialidadCoach << endl;
 	ss << "------------------------------------------------" << endl;
-	ss << "Clientes: " << endl;
+	/*ss << "Clientes: " << endl;
 	for (int i = 0; i < canClientes; i++) {
 		ss<<clientes[i]->toString() << endl << endl;
-	}
-	
+	}*/
+	return ss.str();
 
 }
 
