@@ -41,8 +41,11 @@ public:
 	int getCanClientes();
 	Cliente* getCliente(string);
 	ClaseGrupal* getClaseGrupal(string);
+	string getClientesPorIns(string);
 
-	string toString();
+	string buscarInstructoresPorEspecialidad(string);
+
+	string instructoresSucursal();
 	string clientesSucursal();
 
 };

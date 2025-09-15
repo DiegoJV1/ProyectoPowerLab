@@ -43,7 +43,37 @@ Cliente* Gimnasio::getCliente(string ced) {
 	}
 	return nullptr;
 }
-string Gimnasio::toString() {
+string Gimnasio::clientePorInstructor(string ced) {
+	stringstream ss;
+	for (int i = 0; i < can; i++) {
+		Instructor* instructor = sucursales[i]->getInstructor(ced);
+		if (sucursales[i] != nullptr && instructor!=nullptr) {
+			ss<<sucursales[i]->getClientesPorIns(ced);
+		}
+	}
+	return ss.str();
+}
+// En Gimnasio.cpp
+string Gimnasio::listarInstructoresPorEspecialidad(string espe) {
+	stringstream ss;
+	ss << "\n--- Lista de Instructores por Especialidad: " << espe << " ---" << endl;
+	bool encontrados = false;
+	for (int i = 0; i < can; i++) {
+		if (sucursales[i] != nullptr) {
+			string resultadoSucursal = sucursales[i]->buscarInstructoresPorEspecialidad(espe);
+			if (resultadoSucursal.find("No se encontraron") == string::npos) {
+				ss << resultadoSucursal;
+				encontrados = true;
+			}
+		}
+	}
+	if (!encontrados) {
+		ss << "No se encontraron instructores con esa especialidad en todo el gimnasio." << endl;
+	}
+	ss << "-----------------------------------" << endl;
+	return ss.str();
+}
+/*string Gimnasio::toString() {
 	stringstream ss;
 	ss << "Nombre: " << nombre << endl;
 	ss << "Sucursales: " << endl<<endl;
@@ -52,4 +82,4 @@ string Gimnasio::toString() {
 		ss << sucursales[i]->toString() << endl << endl;
 	}
 	return ss.str();
-}
+}*/

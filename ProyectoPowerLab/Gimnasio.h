@@ -14,6 +14,8 @@ public:
 	void insertarSucursal(Sucursal*);
 	Sucursal* getSucursal(int);
 	Cliente* getCliente(string);
-	string toString();
+	string clientePorInstructor(string);
+	string listarInstructoresPorEspecialidad(string);
+	//string toString();
 };
 

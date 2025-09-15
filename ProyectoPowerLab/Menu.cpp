@@ -216,10 +216,31 @@ void Menu::obtenerMenu() {
 			break;
 		}
 		case 6: {
+			string ced;
+			cout << "--- Lista de clientes por instructor especifico ---" << endl;
+			cout << "Ingrese la cedula del instructor: ";
+			cin >> ced;
 
+			cout << gym->clientePorInstructor(ced);
+
+			break;
 		}
 		case 7: {
+			int cod;
 
+			cout << "--- Lista de instructores por sucursal ---" << endl;
+			cout << "Digite el codigo de la sucursal: ";
+			cin >> cod;
+
+			Sucursal* sucursal = gym->getSucursal(cod);
+
+			if (sucursal != nullptr) {
+				cout << sucursal->instructoresSucursal();
+			}
+			else {
+				cout << "ERROR: El codigo de sucursal no fue encontrado." << endl;
+			}
+			break;
 		}
 		case 8: {
 

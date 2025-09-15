@@ -153,17 +153,40 @@ Cliente* Sucursal:: getCliente(string ced) {
     }
     return nullptr;
 }
+string Sucursal::getClientesPorIns(string ced) {
+    stringstream ss;
+    ss << " Clientes asignados a la cedula: " << ced << endl;
 
-string Sucursal::toString() {
+    for (int i = 0; i < canClientes; i++) {
+        if (clientes[i] != nullptr && clientes[i]->getCoach() != nullptr && clientes[i]->getCoach()->getCedulaCoach() == ced) {
+            ss << clientes[i]->toString() << endl;
+        }
+    }
+    ss << "-----------------------------------" << endl;
+    return ss.str();
+}
+
+
+
+string Sucursal::buscarInstructoresPorEspecialidad(string espe) {
+    stringstream ss;
+    bool encontrados = false;
+    for (int i = 0; i < canInstructores; i++) {
+        if (instructores[i] != nullptr && instructores[i]->getEspecialidadCoach() == espe) {
+            ss << instructores[i]->toString() << endl;
+            encontrados = true;
+        }
+    }
+    if (!encontrados) {
+        ss << "No se encontraron instructores con esa especialidad en esta sucursal." << endl;
+    }
+    return ss.str();
+}
+
+
+
+string Sucursal::instructoresSucursal() {
     stringstream s;
-
-    s << "--- Información de la Sucursal ---" << endl;
-    s << "Código: " << codigo << endl;
-    s << "Teléfono: " << telefono << endl;
-    s << "Provincia: " << provincia << endl;
-    s << "Cantón: " << canton << endl;
-    s << "Correo Electrónico: " << correoElectronico << endl;
-    s << "-----------------------------------" << endl;
 
     s << "\n--- Instructores (" << canInstructores << " de 10) ---" << endl;
     if (canInstructores > 0) {
@@ -173,28 +196,6 @@ string Sucursal::toString() {
     }
     else {
         s << "No hay instructores registrados." << endl;
-    }
-
-    s << "\n--- Clientes (" << canClientes << " de 1000) ---" << endl;
-    if (canClientes > 0) {
-        for (int i = 0; i < canClientes; i++) {
-            s << clientes[i]->toString() << endl;
-        }
-    }
-    else {
-        s << "No hay clientes registrados." << endl;
-    }
-
-    s << "-----------------------------------" << endl;
-
-    s << "\n--- ClasesGrupales (" << canClases << " de 8) ---" << endl;
-    if (canClases > 0) {
-        for (int i = 0; i < canClases; i++) {
-            s << clases[i]->toString() << endl;
-        }
-    }
-    else {
-        s << "No hay clases registradas." << endl;
     }
 
     return s.str();
