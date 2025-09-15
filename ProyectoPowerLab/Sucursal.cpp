@@ -5,6 +5,8 @@ Sucursal::Sucursal() {
     provincia = "Sin definir";
     canton = "Sin definir";
     correoElectronico = "Sin definir";
+    instructores = new Instructor * [10];
+    clientes = new Cliente * [1000];
 
     for (int i = 0; i < 10; ++i) {
         instructores[i] = nullptr;
@@ -22,6 +24,15 @@ Sucursal::Sucursal(int cod, int tel, string prov, string can, string correo) {
     provincia = prov;
     canton = can;
     correoElectronico = correo;
+    instructores = new Instructor * [10];
+    clientes = new Cliente * [1000];
+
+    for (int i = 0; i < 10; ++i) {
+        instructores[i] = nullptr;
+    }
+    for (int i = 0; i < 1000; ++i) {
+        clientes[i] = nullptr;
+    }
 }
 Sucursal::~Sucursal() {
     for (int i = 0; i < 10; ++i) {
@@ -100,7 +111,14 @@ int Sucursal::getCanInstructores() {
 int Sucursal::getCanClientes() {
     return canClientes;
 }
-
+Cliente* Sucursal:: getCliente(string ced) {
+    for (int i = 0; i < canClientes; i++) {
+        if (clientes[i] != nullptr && clientes[i]->getCedulaCliente()==ced) {
+            return clientes[i];
+        }
+    }
+    return nullptr;
+}
 
 string Sucursal::toString() {
     stringstream s;

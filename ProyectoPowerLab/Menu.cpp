@@ -52,7 +52,8 @@ void Menu::obtenerMenu() {
 		}
 		case 2: {
 			int codSucursal;
-			string cedulaInstructor, nombreCliente, cedulaCliente, telefonoCliente, correoCliente, generoCliente;
+			string cedulaInstructor, nombreCliente, cedulaCliente, telefonoCliente, correoCliente;
+			char generoCliente;
 
 			cout << "--- Ingresar Clientes ---" << endl;
 			cout << "Ya debe de existir la sucursal y el instructor." << endl;
@@ -82,8 +83,8 @@ void Menu::obtenerMenu() {
 					cout << "Ingrese el correo del cliente: ";
 					getline(cin, correoCliente);
 
-					cout << "Ingrese el genero del cliente: ";
-					getline(cin, generoCliente);
+					cout << "Ingrese el genero del cliente (H o M): ";
+					cin>>generoCliente;
 
 					Cliente* nuevoCliente = new Cliente();
 					nuevoCliente->setNombreCliente(nombreCliente);
@@ -188,7 +189,7 @@ void Menu::obtenerMenu() {
 			Sucursal* sucursal = gym->getSucursal(codSucursal);
 
 			if (sucursal != nullptr) {
-				cout << sucursal->clientesSucursal(); 
+				cout << sucursal->clientesSucursal();
 			}
 			else {
 				cout << "ERROR: El codigo de sucursal no fue encontrado." << endl;
@@ -196,7 +197,23 @@ void Menu::obtenerMenu() {
 			break;
 		}
 		case 5: {
+			string ced;
 
+			cout << "--- Detalle de un cliente especifico ---" << endl;
+			cout << "Ingrese la cedula del cliente: ";
+			cin >> ced;
+
+			Cliente* clienteEncontrado = gym->getCliente(ced);
+
+			if (clienteEncontrado != nullptr) {
+				cout << "\n--- Cliente Encontrado ---" << endl;
+				cout << clienteEncontrado->toString() << endl;
+
+			}
+			else {
+				cout << "ERROR: Cliente con la cedula " << ced << " no fue encontrado en ninguna sucursal." << endl;
+			}
+			break;
 		}
 		case 6: {
 

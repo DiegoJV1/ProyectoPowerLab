@@ -9,8 +9,8 @@ class Sucursal{
 private:
 	int codigo, telefono;
 	string provincia, canton, correoElectronico;
-	Instructor** instructores = new Instructor*[10];
-	Cliente** clientes = new Cliente*[1000];
+	Instructor** instructores;
+	Cliente** clientes;
 	int canInstructores = 0;
 	int canClientes = 0;
 public:
@@ -36,9 +36,9 @@ public:
 	string getCorreoElectronico();
 	int getCanInstructores();
 	int getCanClientes();
+	Cliente* getCliente(string);
 
 	string toString();
 	string clientesSucursal();
 
 };
-
