@@ -51,17 +51,133 @@ void Menu::obtenerMenu() {
 			break;
 		}
 		case 2: {
-			cout << "--- Ingresar clientes ---" << endl;
-			cout << "Ya debe de existir su surcursal y entrenador " << endl;
-			cout<<
-			Cliente* nuevoCliente=new Cliente();
-			Instructor* coach;
-			string nombreCliente, cedulaCliente, telefonoCliente, correoCliente, generoCliente;
+			int codSucursal;
+			string cedulaInstructor, nombreCliente, cedulaCliente, telefonoCliente, correoCliente, generoCliente;
 
-			gym->getSucursal()
+			cout << "--- Ingresar Clientes ---" << endl;
+			cout << "Ya debe de existir la sucursal y el entrenador." << endl;
+			cout << "Digite el código de la sucursal: ";
+			cin >> codSucursal;
+
+			Sucursal* sucursal = gym->getSucursal(codSucursal); 
+
+			if (sucursal != nullptr) {
+				cout << "Digite la cedula del instructor: ";
+				cin >> cedulaInstructor;
+
+				Instructor* coach = sucursal->getInstructor(cedulaInstructor); 
+
+				if (coach != nullptr) {
+
+					cout << "--- Datos del nuevo cliente ---" << endl;
+					cout << "Ingrese el nombre del cliente: ";
+					getline(cin, nombreCliente);
+
+					cout << "Ingrese la cedula del cliente: ";
+					getline(cin, cedulaCliente);
+
+					cout << "Ingrese el telefono del cliente: ";
+					getline(cin, telefonoCliente);
+
+					cout << "Ingrese el correo del cliente: ";
+					getline(cin, correoCliente);
+
+					cout << "Ingrese el genero del cliente: ";
+					getline(cin, generoCliente);
+
+					Cliente* nuevoCliente = new Cliente();
+					nuevoCliente->setNombreCliente(nombreCliente);
+					nuevoCliente->setCedulaCliente(cedulaCliente);
+					nuevoCliente->setTelefonoCliente(telefonoCliente);
+					nuevoCliente->setCorreoCliente(correoCliente);
+					nuevoCliente->setGeneroCliente(generoCliente);
+					nuevoCliente->setCoach(coach);
+
+					sucursal->setCliente(nuevoCliente);
+					cout << "\nCliente ingresado exitosamente." << endl;
+				}
+				else {
+					cout << "ERROR: La cedula del instructor no esta en la base de datos." << endl;
+				}
+			}
+			else {
+				cout << "ERROR: El codigo de la sucursal no esta en la base de datos." << endl;
+			}
+			break;
 		}
 		case 3: {
+			int codSucursal;
+			string nombreCoach, cedulaCoach, telefonoCoach, correoCoach, especialidadCoach;
+			int dia, mes, annio;
+			int opcionEspecialidad;
 
+			cout << "--- Ingresar Instructores ---" << endl;
+			cout << "Ya debe de existir la sucursal." << endl;
+			cout << "Digite el codigo de la sucursal: ";
+			cin >> codSucursal;
+
+			Sucursal* sucursal = gym->getSucursal(codSucursal);
+
+			if (sucursal != nullptr) {
+
+				cout << "--- Datos del nuevo instructor ---" << endl;
+				cout << "Ingrese el nombre del instructor: ";
+				getline(cin, nombreCoach);
+
+				cout << "Ingrese la cedula del instructor: ";
+				getline(cin, cedulaCoach);
+
+				cout << "Ingrese el telefono del instructor: ";
+				getline(cin, telefonoCoach);
+
+				cout << "Ingrese el correo del instructor: ";
+				getline(cin, correoCoach);
+
+				// Menú para seleccionar especialidad
+				do {
+					cout << "\n--- Seleccione una especialidad ---" << endl;
+					cout << "1. CrossFit" << endl;
+					cout << "2. HIIT" << endl;
+					cout << "3. TRX" << endl;
+					cout << "4. Pesas" << endl;
+					cout << "5. Spinning" << endl;
+					cout << "6. Cardio" << endl;
+					cout << "7. Yoga" << endl;
+					cout << "8. Zumba" << endl;
+					cout << "0. Terminar de agregar especialidades" << endl;
+					cout << "Seleccione una opcion: ";
+					cin >> opcionEspecialidad;
+					//Aca faltaaaaaaaaaaaaaaaa
+
+				} while (opcionEspecialidad != 0);
+
+				cout << "--- Fecha de Nacimiento ---" << endl;
+				cout << "Ingrese el dia: ";
+				cin >> dia;
+				cout << "Ingrese el mes: ";
+				cin >> mes;
+				cout << "Ingrese el anio: ";
+				cin >> annio;
+
+				Fecha* fechaNacimientoCoach = new Fecha(dia, mes, annio);
+				Instructor* instructor = new Instructor();
+
+				instructor->setNombreCoach(nombreCoach);
+				instructor->setCedulaCoach(cedulaCoach);
+				instructor->setTelefonoCoach(telefonoCoach);
+				instructor->setCorreoCoach(correoCoach);
+				instructor->setEspecialidadCoach(especialidadCoach);
+				instructor->setFechaNacimientoCoach(fechaNacimientoCoach);
+
+				sucursal->setInstructor(instructor);
+
+				cout << "\nInstructor ingresado exitosamente." << endl;
+
+			}
+			else {
+				cout << "ERROR: El codigo de la sucursal no esta en la base de datos." << endl;
+			}
+			break;
 		}
 		case 4: {
 
