@@ -55,7 +55,7 @@ void Menu::obtenerMenu() {
 			string cedulaInstructor, nombreCliente, cedulaCliente, telefonoCliente, correoCliente, generoCliente;
 
 			cout << "--- Ingresar Clientes ---" << endl;
-			cout << "Ya debe de existir la sucursal y el entrenador." << endl;
+			cout << "Ya debe de existir la sucursal y el instructor." << endl;
 			cout << "Digite el código de la sucursal: ";
 			cin >> codSucursal;
 
@@ -133,6 +133,17 @@ void Menu::obtenerMenu() {
 				cout << "Ingrese el correo del instructor: ";
 				getline(cin, correoCoach);
 
+			
+				cout << "--- Fecha de Nacimiento ---" << endl;
+				cout << "Ingrese el dia: ";
+				cin >> dia;
+				cout << "Ingrese el mes: ";
+				cin >> mes;
+				cout << "Ingrese el anio: ";
+				cin >> annio;
+
+				Fecha* fechaNacimientoCoach = new Fecha(dia, mes, annio);
+				Instructor* instructor = new Instructor();
 				// Menú para seleccionar especialidad
 				do {
 					cout << "\n--- Seleccione una especialidad ---" << endl;
@@ -147,26 +158,14 @@ void Menu::obtenerMenu() {
 					cout << "0. Terminar de agregar especialidades" << endl;
 					cout << "Seleccione una opcion: ";
 					cin >> opcionEspecialidad;
-					//Aca faltaaaaaaaaaaaaaaaa
+					instructor->setEspecialidadCoach(opcionEspecialidad);
 
 				} while (opcionEspecialidad != 0);
-
-				cout << "--- Fecha de Nacimiento ---" << endl;
-				cout << "Ingrese el dia: ";
-				cin >> dia;
-				cout << "Ingrese el mes: ";
-				cin >> mes;
-				cout << "Ingrese el anio: ";
-				cin >> annio;
-
-				Fecha* fechaNacimientoCoach = new Fecha(dia, mes, annio);
-				Instructor* instructor = new Instructor();
 
 				instructor->setNombreCoach(nombreCoach);
 				instructor->setCedulaCoach(cedulaCoach);
 				instructor->setTelefonoCoach(telefonoCoach);
 				instructor->setCorreoCoach(correoCoach);
-				instructor->setEspecialidadCoach(especialidadCoach);
 				instructor->setFechaNacimientoCoach(fechaNacimientoCoach);
 
 				sucursal->setInstructor(instructor);
@@ -180,7 +179,21 @@ void Menu::obtenerMenu() {
 			break;
 		}
 		case 4: {
+			int codSucursal;
 
+			cout << "--- Lista general de todos los clientes por sucursal especifica ---" << endl;
+			cout << "Digite el codigo de la sucursal: ";
+			cin >> codSucursal;
+
+			Sucursal* sucursal = gym->getSucursal(codSucursal);
+
+			if (sucursal != nullptr) {
+				cout << sucursal->clientesSucursal(); 
+			}
+			else {
+				cout << "ERROR: El codigo de sucursal no fue encontrado." << endl;
+			}
+			break;
 		}
 		case 5: {
 

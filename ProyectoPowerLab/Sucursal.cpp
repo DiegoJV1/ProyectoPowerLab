@@ -137,3 +137,20 @@ string Sucursal::toString() {
 
     return s.str();
 }
+string Sucursal:: clientesSucursal() {
+    stringstream s;
+
+    s << "\n--- Clientes (" << canClientes << " de 1000) ---" << endl;
+    if (canClientes > 0) {
+        for (int i = 0; i < canClientes; i++) {
+            s << clientes[i]->toString() << endl;
+        }
+    }
+    else {
+        s << "No hay clientes registrados." << endl;
+    }
+
+    s << "-----------------------------------" << endl;
+
+    return s.str();
+}

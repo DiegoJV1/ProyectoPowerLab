@@ -38,5 +38,7 @@ public:
 	int getCanClientes();
 
 	string toString();
+	string clientesSucursal();
+
 };
 
