@@ -8,7 +8,6 @@ private:
 	Fecha* fechaNacimientoCoach;
 	string nombreCoach, cedulaCoach, telefonoCoach, correoCoach, especialidadCoach;
 	int canClientes, tamClientes;
-	//Cliente** clientes;
 public:
 	Instructor();
 	~Instructor();
@@ -18,9 +17,6 @@ public:
 	void setCorreoCoach(string);
 	void setFechaNacimientoCoach(Fecha*);
 	void setEspecialidadCoach(string);
-
-	//void insertarCliente(Cliente*);
-	//void eliminarCliente(string);
 
 	string getNombreCoach();
 	string getCedulaCoach();

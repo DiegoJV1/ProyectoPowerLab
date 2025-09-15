@@ -12,54 +12,9 @@ Instructor::Instructor() {
 	canClientes = 0;
 	tamClientes = 1000;
 	fechaNacimientoCoach = nullptr;
-	/*clientes = new Cliente * [tamClientes];
-	for (int i = 0; i < tamClientes; i++) {
-		clientes[i] = nullptr;
-	*/
 }
 Instructor::~Instructor() {
-	/*for (int i = 0; i < canClientes; i++) {
-		delete clientes[i];
-		clientes[i] = nullptr;
-	}
-	canClientes = 0;
-	*/
 }
-/*void Instructor::insertarCliente(Cliente* aux) {
-	if (canClientes < tamClientes) {
-		clientes[canClientes] = aux;
-		canClientes++;
-	}
-	else {
-		cout << "ERROR-Vector lleno";
-	}
-}
-void Instructor::eliminarCliente(string cedaux) {
-	int pos = -1;
-
-	for (int i = 0; i < canClientes; i++) {
-		if (clientes[i] != nullptr && clientes[i]->getCedulaCliente() == cedaux) {
-			pos = i;
-			break; 
-		}
-	}
-
-	if (pos != -1) {
-		delete clientes[pos];
-		clientes[pos] = nullptr;
-		for (int i = pos; i < canClientes - 1; i++) {
-			clientes[i] = clientes[i + 1];
-		}
-
-		clientes[canClientes - 1] = nullptr;
-		canClientes--; 
-
-		cout << "Cliente con cedula " << cedaux << " eliminado exitosamente." << endl;
-	}
-	else {
-		cout << "ERROR: Cliente con cedula " << cedaux << " no encontrado." << endl;
-	}
-}*/
 void Instructor::setNombreCoach(string nomaux) {
 	this->nombreCoach = nomaux;
 }
@@ -106,10 +61,6 @@ string Instructor::toString() {
 	ss << "Fecha Nacimiento:" << fechaNacimientoCoach << endl;
 	ss << "Especialidad:" << especialidadCoach << endl;
 	ss << "------------------------------------------------" << endl;
-	/*ss << "Clientes: " << endl;
-	for (int i = 0; i < canClientes; i++) {
-		ss<<clientes[i]->toString() << endl << endl;
-	}*/
 	return ss.str();
 
 }
