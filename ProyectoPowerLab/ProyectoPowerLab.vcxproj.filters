@@ -39,13 +39,16 @@
     <ClCompile Include="Ejercicio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GrupoMuscular.cpp">
+    <ClCompile Include="BateriaEjercicios.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Fecha.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MedidasCorporales.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GrupoMuscular.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,13 +74,16 @@
     <ClInclude Include="Ejercicio.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GrupoMuscular.h">
+    <ClInclude Include="BateriaEjercicios.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fecha.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MedidasCorporales.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GrupoMuscular.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

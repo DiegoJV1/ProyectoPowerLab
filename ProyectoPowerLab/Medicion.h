@@ -9,9 +9,11 @@ using namespace std;
 class Medicion{
 private:
 	Fecha* fechaMedicion;
-	float peso, altura, porcenGrasa, porcenMusculo, edadMetabolica, porcenGrasaVisceral, IMC;
+	float peso, altura, porcenGrasa, porcenMusculo, edadMetabolica, porcenGrasaVisceral, IMC, ingestaProteina;
 	MedidasCorporales* medidas;
-	string clasificacionIMC;
+	string clasificacionIMC, tipoPaciente, generoPaciente, ejercita;
+	int vasosAgua;
+
 public:
 	Medicion();
 	~Medicion();
@@ -23,9 +25,13 @@ public:
 	void setEdadMetabolica(float);
 	void setPorcenGrasaVisceral(float);
 	void setMedidas(MedidasCorporales*);
+	void setGeneroPaciente(string);
+	void setEjercita(string);
 	
 	void calculoIMC();
 	void clasificacionPorIMC();
+	void calculoVasosAgua();
+	void calculoIngestaProteina();
 
 	Fecha* getFecha();
 	float getPeso();
@@ -35,6 +41,11 @@ public:
 	float getEdadMetabolica();
 	float getPorcenGrasaVisceral();
 	float getIMC();
+	float getIngestaProteina();
+	int getVasosAgua();
+	string getGeneroPaciente();
+	string getEjercita();
+
 	string getClasificacionIMC();
 	MedidasCorporales* getMedidas();
 

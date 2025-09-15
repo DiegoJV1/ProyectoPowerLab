@@ -4,12 +4,11 @@ class GrupoMuscular{
 private:
 	int can;
 	int tam;
-	Ejercicio** gm=nullptr;
+	Ejercicio** gm;
 public:
 	GrupoMuscular();
 	~GrupoMuscular();
 	void insertarEjercicio(Ejercicio*);
-	void eliminarEjercicio(string);
 	string toString();
 };
 

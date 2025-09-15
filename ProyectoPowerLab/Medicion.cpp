@@ -1,5 +1,9 @@
 #include "Medicion.h"
-//Hola
+#include<sstream>
+#include<string>
+#include<iostream>
+using namespace std;
+
 Medicion::Medicion() {
 	fechaMedicion = nullptr;
 	medidas = nullptr;
@@ -11,6 +15,11 @@ Medicion::Medicion() {
 	edadMetabolica = 0.0;
 	IMC = 0.0;
 	clasificacionIMC = "Sin Definir";
+	tipoPaciente = "Paciente Regular";
+	vasosAgua = 0;
+	generoPaciente = "Sin definir";
+	ingestaProteina = 0.0;
+	ejercita = "no";
 }
 Medicion::~Medicion() {
 	delete fechaMedicion;
@@ -45,11 +54,31 @@ void Medicion::setPorcenGrasaVisceral(float pgv) {
 void Medicion::setMedidas(MedidasCorporales* m) {
 	medidas = m;
 }
+void Medicion::setGeneroPaciente(char gen) {
+	this->generoPaciente = gen;
+}
+void Medicion::setEjercita(string aux) {
+	this->ejercita = aux;
+}
 
 
 void Medicion::calculoIMC() {
 	IMC = peso / (altura * altura);
 }
+void Medicion::calculoIngestaProteina() {
+	ingestaProteinaMinima = 0.8 * peso;
+	ingestaProteinaMaximo = 0.8 * peso;
+	if (generoPaciente == '' && ejercita == "si" || ejercita == "SI" || ejercita == "Si" || ejercita == "sI") {
+		
+	}
+	else if (generoPaciente == "mujer" && ejercita == "si" || ejercita == "SI" || ejercita == "Si" || ejercita == "sI") {
+		
+	}
+}
+void Medicion::calculoVasosAgua() {
+	vasosAgua = peso / 7;
+}
+
 void Medicion::clasificacionPorIMC() {
 	calculoIMC();
 	if (IMC < 16.00) {
@@ -77,10 +106,12 @@ void Medicion::clasificacionPorIMC() {
 	}
 	else if (IMC < 39.99) {
 		clasificacionIMC = "Obesidad media";
+		tipoPaciente = "Paciente de alto riesgo";
 
 	}
 	else {
 		clasificacionIMC = "Obesidad morbida";
+		tipoPaciente = "Paciente de alto riesgo";
 
 	}
 }
@@ -118,6 +149,20 @@ string Medicion::getClasificacionIMC() {
 MedidasCorporales* Medicion::getMedidas() {
 	return medidas;
 }
+string Medicion::getGeneroPaciente() {
+	return generoPaciente;
+}
+int Medicion::getVasosAgua() {
+	calculoVasosAgua();
+	return vasosAgua;
+}
+float Medicion::getIngestaProteina() {
+	calculoIngestaProteina();
+	return ingestaProteina;
+}
+string Medicion::getEjercita() {
+	return ejercita;
+}
 
 string Medicion::toString() {
 	stringstream s;
@@ -129,6 +174,8 @@ string Medicion::toString() {
 	} else {
 	     s << "Sin fecha" << endl;
 	}
+	s << "¿Se ejercita? " << ejercita << endl;
+	s << "Genero: " << generoPaciente << endl;
 	s << "Peso: " << peso << " kg" << endl;
 	s << "Altura: " << altura << " m" << endl;
 	s << "Porcentaje de Grasa: " << porcenGrasa << " %" << endl;
@@ -138,6 +185,11 @@ string Medicion::toString() {
 	calculoIMC();
 	s << "IMC: " << IMC << endl;
 	s << "Clasificación IMC: " << clasificacionIMC << endl;
+	s << "Tipo de Paciente: " << tipoPaciente << endl;
+	calculoVasosAgua();
+	s << "Vasos de agua diarios (250ml): " << vasosAgua << endl;
+	calculoIngestaProteina();
+	s << "Ingesta de proteina diaria: " << ingestaProteina << endl;
 
 	 if (medidas != nullptr) {
 	     s << "\nMedidas corporales:" << endl;
