@@ -133,6 +133,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Medicion.cpp" />
     <ClCompile Include="MedidasCorporales.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Rutina.cpp" />
     <ClCompile Include="Sucursal.cpp" />
   </ItemGroup>
@@ -146,6 +147,7 @@
     <ClInclude Include="Instructor.h" />
     <ClInclude Include="Medicion.h" />
     <ClInclude Include="MedidasCorporales.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Rutina.h" />
     <ClInclude Include="Sucursal.h" />
   </ItemGroup>
