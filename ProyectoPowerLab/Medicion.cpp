@@ -18,8 +18,27 @@ Medicion::Medicion() {
 	tipoPaciente = "Paciente Regular";
 	vasosAgua = 0;
 	generoPaciente = "Sin definir";
-	ingestaProteina = 0.0;
+	ingestaProteinaMaxima = 0.0;
+	ingestaProteinaMinima = 0.0;
 	ejercita = "no";
+}
+Medicion::Medicion(double p, double a, int d, int m, int y) {
+	fechaMedicion = new Fecha(d, m, y);
+	peso = p;
+	altura = a;
+	porcenGrasa = 0.0;
+	porcenMusculo = 0.0;
+	porcenGrasaVisceral = 0.0;
+	edadMetabolica = 0.0;
+	IMC = 0.0;
+	clasificacionIMC = "Sin Definir";
+	tipoPaciente = "Paciente Regular";
+	vasosAgua = 0;
+	generoPaciente = "Sin definir";
+	ingestaProteinaMaxima = 0.0;
+	ingestaProteinaMinima = 0.0;
+	ejercita = "no";
+	medidas = nullptr; 
 }
 Medicion::~Medicion() {
 	delete fechaMedicion;

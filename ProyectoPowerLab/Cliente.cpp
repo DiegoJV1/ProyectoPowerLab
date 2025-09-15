@@ -23,24 +23,10 @@ Cliente::Cliente() {
 	}
 }
 Cliente::~Cliente() {
-	nombreCliente = "Sin definir";
-	cedulaCliente = "0";
-	telefonoCliente = "0";
-	correoCliente = "Sin definir";
-	generoCliente = "Sin Definir";
-	contadorClases = 0;
-
-	delete coach;
-	coach = nullptr;
-	delete rutinaCliente;
-	rutinaCliente = nullptr;
-
 	for (int i = 0; i < can; i++) {
 		delete historialMedicion[i];
-		historialMedicion[i] = nullptr;
 	}
 	delete[] historialMedicion;
-	can = 0;
 }
 
 void Cliente::setContadorClases(int num) {
@@ -80,13 +66,11 @@ void Cliente::insertarMedicion(Medicion* aux) {
 	}
 	else {
 		delete historialMedicion[0];
-		historialMedicion[0] = nullptr;
-		for (int i = 0; i < can; i++) {
+
+		for (int i = 0; i < tam - 1; i++) {
 			historialMedicion[i] = historialMedicion[i + 1];
-			can--;
 		}
-		historialMedicion[can] = aux;
-		can++;
+		historialMedicion[tam - 1] = aux; 
 	}
 }
 Medicion* Cliente:: buscarPorFecha(Fecha* aux) {

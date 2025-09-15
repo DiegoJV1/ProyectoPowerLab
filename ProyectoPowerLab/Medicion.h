@@ -16,6 +16,7 @@ private:
 
 public:
 	Medicion();
+	Medicion(double, double, int, int, int);
 	~Medicion();
 	void setFechaMedicion(Fecha*);
 	void setPeso(float);
