@@ -19,7 +19,6 @@ public:
 	void setTelefonoCoach(string);
 	void setCorreoCoach(string);
 	void setFechaNacimientoCoach(Fecha*);
-	void setEspecialidadCoach(int);
 
 	void insertarEspecialidad(Especialidad*);
 
@@ -27,7 +26,7 @@ public:
 	string getCedulaCoach();
 	string getTelefonoCoach();
 	string getCorreoCoach();
-	string getEspecialidadCoach();
+	bool buscarEspecialidadCoach(string);
 	Fecha* getFechaNacimientoCoach();
 
 	string toString();

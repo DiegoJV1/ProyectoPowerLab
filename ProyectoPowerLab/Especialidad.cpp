@@ -35,6 +35,7 @@ void Especialidad::setNombreEspecialidad(int aux) {
 string Especialidad::getNombreEspecialidad() {
 	return nombreEspecialidad;
 }
+
 string Especialidad::toString() {
 	stringstream ss;
 	ss << "Especialidad: " << nombreEspecialidad << endl;

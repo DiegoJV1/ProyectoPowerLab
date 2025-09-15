@@ -73,6 +73,15 @@ string Gimnasio::listarInstructoresPorEspecialidad(string espe) {
 	ss << "-----------------------------------" << endl;
 	return ss.str();
 }
+string Gimnasio::verificarInscrito(string cedaux) {
+	stringstream ss;
+	for (int i = 0; i < can; i++) {
+		if (sucursales[i]->verificacionCodBusquedaClasesPorCliente(cedaux) == true) {
+			ss<<sucursales[i]->ImprimirCodBusquedaClasesPorCliente(cedaux)<<endl<<endl;
+		}
+	}
+	return ss.str();
+}
 /*string Gimnasio::toString() {
 	stringstream ss;
 	ss << "Nombre: " << nombre << endl;

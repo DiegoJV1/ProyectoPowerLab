@@ -1,11 +1,12 @@
 #include<iostream>
 #include"Gimnasio.h"
+#include"Menu.h"
 using namespace std;
 int main(){
-	Cliente* c1;
-	c1 = new Cliente();
-	Instructor* i1;
-	i1 = new Instructor();
+	Gimnasio* g1 = new Gimnasio();
+	Menu* m1 = new Menu(g1);
+	m1->obtenerMenu();
+
 	
 }
 

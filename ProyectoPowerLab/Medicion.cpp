@@ -123,7 +123,7 @@ void Medicion::clasificacionPorIMC() {
 
 	}
 	else if (IMC <= 29.99) {
-		clasificacionIMC = "Pre-obesiada";
+		clasificacionIMC = "Pre-Obesidad";
 
 	}
 	else if (IMC <= 34.99) {

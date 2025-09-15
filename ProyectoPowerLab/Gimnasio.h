@@ -16,6 +16,7 @@ public:
 	Cliente* getCliente(string);
 	string clientePorInstructor(string);
 	string listarInstructoresPorEspecialidad(string);
+	string verificarInscrito(string);
 	//string toString();
 };
 

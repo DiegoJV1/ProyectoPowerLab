@@ -2,6 +2,7 @@
 #include<sstream>
 ClaseGrupal::ClaseGrupal() {
 	nombreClaseGrupal = "Sin Definir";
+	tipo = nullptr;
 	codigoClaseGrupal = "Sin Definir";
 	salon = "Sin Definir";
 	coachClase = nullptr;
@@ -32,8 +33,14 @@ bool ClaseGrupal::insertarCliente(Cliente* aux) {
 		return false;
 	}
 }
+void ClaseGrupal::setCapacidad(int num) {
+	this->capacidad = num;
+}
+void ClaseGrupal::setTipo(Especialidad* aux) {
+	this->tipo = aux;
+}
 void ClaseGrupal::setHorario(Horario* aux) {
-	horario = aux;
+	this->horario = aux;
 }
 void ClaseGrupal::modificarCapacidadClase(int num) {
 	this->capacidad = num;
@@ -68,10 +75,22 @@ string ClaseGrupal::getSalon() {
 Horario* ClaseGrupal::getHorario() {
 	return horario;
 }
+Especialidad* ClaseGrupal::getTipo() {
+	return tipo;
+}
+bool ClaseGrupal::busquedaCliente(string aux) {
+	for (int i = 0; i < canInscritos; i++) {
+		if (inscritos[i]->getCedulaCliente() == aux) {
+			return true;
+		}
+	}
+	return false;
+}
 string ClaseGrupal::toString() {
 	stringstream ss;
 	ss << "---Clase Grupal---" << endl;
 	ss << "Nombre: " << nombreClaseGrupal << endl;
+	ss << "Tipo de Clase: " << tipo->getNombreEspecialidad() << endl;
 	ss << "Codigo: " << codigoClaseGrupal << endl;
 	ss << "Salon: " << salon << endl;
 	ss << "Capacidad: " << capacidad << endl;
@@ -83,5 +102,19 @@ string ClaseGrupal::toString() {
 	for (int i = 0; i < canInscritos; i++) {
 		ss << inscritos[i]->toString() << endl << endl;
 	}
+	return ss.str();
+}
+string ClaseGrupal::toStringSoloDatos() {
+	stringstream ss;
+	ss << "---Clase Grupal---" << endl;
+	ss << "Nombre: " << nombreClaseGrupal << endl;
+	ss << "Tipo de Clase: " << tipo->getNombreEspecialidad() << endl;
+	ss << "Codigo: " << codigoClaseGrupal << endl;
+	ss << "Salon: " << salon << endl;
+	ss << "Capacidad: " << capacidad << endl;
+	ss << "Horario: " << endl;
+	ss << horario->toString() << endl;
+	ss << "Instructor: " << endl;
+	ss << coachClase->toString() << endl;
 	return ss.str();
 }

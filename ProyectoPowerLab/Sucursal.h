@@ -47,5 +47,8 @@ public:
 
 	string instructoresSucursal();
 	string clientesSucursal();
-
+	string clasesSucursal();
+	string clasificacionPorIMC();
+	string ImprimirCodBusquedaClasesPorCliente(string);
+	bool verificacionCodBusquedaClasesPorCliente(string);
 };

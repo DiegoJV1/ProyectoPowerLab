@@ -64,6 +64,14 @@ void Instructor::insertarEspecialidad(Especialidad* aux) {
 		cout << "ERROR";
 	}
 }
+bool Instructor::buscarEspecialidadCoach(string aux) {
+	for (int i = 0; i < canEspecialidades; i++) {
+		if (especialidades[i]->getNombreEspecialidad() == aux) {
+			return true;
+		}
+	}
+	return false;
+}
 
 string Instructor::toString() {
 	stringstream ss;
