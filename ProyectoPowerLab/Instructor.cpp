@@ -8,12 +8,22 @@ Instructor::Instructor() {
 	cedulaCoach= "Sin definir";
 	telefonoCoach= "Sin definir";
 	correoCoach= "Sin definir";
-	especialidadCoach= "Sin definir";
-	canClientes = 0;
-	tamClientes = 1000;
 	fechaNacimientoCoach = nullptr;
+	
+	canEspecialidades = 0;
+	tamEspecialidades = 8;
+	especialidades = new Especialidad * [tamEspecialidades];
+	for (int i = 0; i < tamEspecialidades; i++) {
+		especialidades[i] = nullptr;
+	}
 }
 Instructor::~Instructor() {
+	for (int i = 0; i < tamEspecialidades; i++) {
+		delete especialidades[i];
+		especialidades[i] = nullptr;
+	}
+	delete[] especialidades;
+	canEspecialidades = 0;
 }
 void Instructor::setNombreCoach(string nomaux) {
 	this->nombreCoach = nomaux;
@@ -30,9 +40,6 @@ void Instructor::setCorreoCoach(string correoaux) {
 void Instructor::setFechaNacimientoCoach(Fecha* fechaaux) {
 	this->fechaNacimientoCoach = fechaaux;
 }
-void Instructor::setEspecialidadCoach(int espaux) {
-	
-}
 string Instructor::getNombreCoach() {
 	return nombreCoach;
 }
@@ -48,8 +55,14 @@ string Instructor::getCorreoCoach() {
 Fecha* Instructor::getFechaNacimientoCoach() {
 	return fechaNacimientoCoach;
 }
-string Instructor::getEspecialidadCoach() {
-	return especialidadCoach;
+void Instructor::insertarEspecialidad(Especialidad* aux) {
+	if (canEspecialidades < tamEspecialidades) {
+		especialidades[canEspecialidades] = aux;
+		canEspecialidades++;
+	}
+	else {
+		cout << "ERROR";
+	}
 }
 
 string Instructor::toString() {
@@ -59,7 +72,10 @@ string Instructor::toString() {
 	ss << "Telefono:" << telefonoCoach << endl;
 	ss << "Correo Electronico:" << correoCoach << endl;
 	ss << "Fecha Nacimiento:" << fechaNacimientoCoach << endl;
-	ss << "Especialidad:" << especialidadCoach << endl;
+	ss << "Especialidades:"<< endl<<endl;
+	for (int i = 0; i < canEspecialidades; i++) {
+		ss<<especialidades[i]->toString() << endl;
+	}
 	ss << "------------------------------------------------" << endl;
 	return ss.str();
 

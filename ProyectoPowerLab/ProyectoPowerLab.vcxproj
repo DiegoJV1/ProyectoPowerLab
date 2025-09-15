@@ -126,10 +126,12 @@
     <ClCompile Include="ClaseGrupal.cpp" />
     <ClCompile Include="Cliente.cpp" />
     <ClCompile Include="Ejercicio.cpp" />
+    <ClCompile Include="Especialidad.cpp" />
     <ClCompile Include="Fecha.cpp" />
     <ClCompile Include="Gimnasio.cpp" />
     <ClCompile Include="BateriaEjercicios.cpp" />
     <ClCompile Include="GrupoMuscular.cpp" />
+    <ClCompile Include="Horario.cpp" />
     <ClCompile Include="Instructor.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Medicion.cpp" />
@@ -142,10 +144,12 @@
     <ClInclude Include="ClaseGrupal.h" />
     <ClInclude Include="Cliente.h" />
     <ClInclude Include="Ejercicio.h" />
+    <ClInclude Include="Especialidad.h" />
     <ClInclude Include="Fecha.h" />
     <ClInclude Include="Gimnasio.h" />
     <ClInclude Include="BateriaEjercicios.h" />
     <ClInclude Include="GrupoMuscular.h" />
+    <ClInclude Include="Horario.h" />
     <ClInclude Include="Instructor.h" />
     <ClInclude Include="Medicion.h" />
     <ClInclude Include="MedidasCorporales.h" />

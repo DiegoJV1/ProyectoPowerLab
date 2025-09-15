@@ -1,14 +1,16 @@
 #pragma once
 #include <string>
 #include "Fecha.h"
+#include "Especialidad.h"
 
 using namespace std;
 class Instructor{
 private:
 	Fecha* fechaNacimientoCoach;
 	string nombreCoach, cedulaCoach, telefonoCoach, correoCoach;
-	string especialidadCoach;
-	int canClientes, tamClientes;
+	Especialidad** especialidades;
+	int canEspecialidades, tamEspecialidades;
+
 public:
 	Instructor();
 	~Instructor();
@@ -18,6 +20,8 @@ public:
 	void setCorreoCoach(string);
 	void setFechaNacimientoCoach(Fecha*);
 	void setEspecialidadCoach(int);
+
+	void insertarEspecialidad(Especialidad*);
 
 	string getNombreCoach();
 	string getCedulaCoach();
