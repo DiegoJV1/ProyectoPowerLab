@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include<iostream>
 #include"BateriaEjercicios.h"
 using namespace std;
 Menu::Menu(Gimnasio* aux) {
@@ -15,49 +16,57 @@ void Menu::obtenerMenu() {
 		cout << "1. Ingresar Sucursal" << endl;
 		cout << "2. Ingresar clientes" << endl;
 		cout << "3. Ingresar instructores" << endl;
-		cout << "4. Lista general de todos los clientes por sucursal específica" << endl;
-		cout << "5. Detalle de un cliente específico" << endl;
-		cout << "6. Lista de clientes por instructor específico" << endl;
+		cout << "4. Lista general de todos los clientes por sucursal especifica" << endl;
+		cout << "5. Detalle de un cliente especifico" << endl;
+		cout << "6. Lista de clientes por instructor especifico" << endl;
 		cout << "7. Lista de instructores por sucursal" << endl;
 		cout << "8. Lista de instructores por especialidad" << endl;
-		cout << "9. El sistema permite ingresar el registro de medición a un cliente especifico" << endl;
-		cout << "10. Hecho lo anterior se debe poder buscar un cliente y mostrar su historial de mediciones, organizadas por fecha, con la opción demostrar el detalle de cualquiera de sus reportes de medición" << endl;
-		cout << "11. Se debe mostrar por sucursal especifica, cuántos y cuáles clientes se ubican en cada uno de los rangos de contextura según el IMC. " << endl;
-		cout << "12. El sistema debe permitir ingresar ejercicios a la “batería de ejercicios”." << endl;
-		cout << "13. El sistema debe permitir la generación de una nueva rutina a un cliente especifico(a partir de la “batería de ejercicios”).Se debe poder buscar cualquier cliente de cualquier sucursal y mostrar la rutinagenerada." << endl;
-		cout << "14. El sistema debe permitir crear clases grupales por sucursal especifica.Debe permitir visualizar dichas clases grupales, con todo su detalle" << endl;
-		cout << "15. El sistema debe permitir matricular clientes en las clases grupales impartidas en las diferentes sucursales. Para verificar estos, sedebe permitir visualizar la lista de clientes matriculados por clase especifica. " << endl;
-		cout << "16. Se debe permitir visualizar las clases matriculadas por cliente especifico" << endl;
-
+		cout << "9. Registro de medicion a un cliente" << endl;
+		cout << "10. Busqueda de Cliente y su historial de mediciones" << endl;
+		cout << "11. Clasificacion de clientes por IMC en una sucursal. " << endl;
+		cout << "12. Ingreso de ejercicios a la bateria de ejercicios." << endl;
+		cout << "13. Generacion de rutina a un cliente." << endl;
+		cout << "14. Creacion de clases grupales y visualizacion" << endl;
+		cout << "15. Matricula de cliente a una clase grupal. " << endl;
+		cout << "16. Lista de clases matriculadas por un cliente." << endl;
 		cout << "0. Salir" << endl;
 		cout << "Seleccione una opcion: ";
 		cin >> opcion;
+		system("cls");
 		switch (opcion) {
 		case 1: {
 			int codigo, telefono;
 			string provincia, canton, correo;
-
+			Sucursal* nuevaSucursal = new Sucursal();
 			cout << "--- Ingresar Sucursal ---" << endl;
-			cout << "Ingrese el código: ";
+			cout << "Ingrese el codigo: ";
 			cin >> codigo;
+			nuevaSucursal->setCodigo(codigo);
 
-			cout << "Ingrese el teléfono: ";
+			cout << "Ingrese el telefono: ";
 			cin >> telefono;
+			nuevaSucursal->setTelefono(telefono);
+			cin.ignore();
 
 			cout << "Ingrese la provincia: ";
 			getline(cin, provincia);
+			nuevaSucursal->setProvincia(provincia);
 
-			cout << "Ingrese el cantón: ";
+			cout << "Ingrese el canton: ";
 			getline(cin, canton);
+			nuevaSucursal->setCanton(canton);
 
-			cout << "Ingrese el correo electrónico: ";
-			getline(cin, correo);
-
-			Sucursal* nuevaSucursal = new Sucursal(codigo, telefono, provincia, canton, correo);
+			cout << "Ingrese el correo electronico: ";
+			cin >> correo;
+			nuevaSucursal->setCorreoElectronico(correo);
+			
 			gym->insertarSucursal(nuevaSucursal);
 
 			cout << "\nSucursal ingresada exitosamente." << endl;
+			system("pause");
+			system("cls");
 			break;
+			
 		}
 		case 2: {
 			int codSucursal;
@@ -113,6 +122,8 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: El codigo de la sucursal no esta en la base de datos." << endl;
 			}
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 3: {
@@ -126,6 +137,7 @@ void Menu::obtenerMenu() {
 			cout << "Ya debe de existir la sucursal." << endl;
 			cout << "Digite el codigo de la sucursal: ";
 			cin >> codSucursal;
+			cin.ignore();
 
 			Sucursal* sucursal = gym->getSucursal(codSucursal);
 
@@ -189,6 +201,8 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: El codigo de la sucursal no esta en la base de datos." << endl;
 			}
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 4: {
@@ -206,6 +220,8 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: El codigo de sucursal no fue encontrado." << endl;
 			}
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 5: {
@@ -226,6 +242,8 @@ void Menu::obtenerMenu() {
 				cout << "ERROR: Cliente con la cedula " << ced << " no fue encontrado en ninguna sucursal." << endl;
 			}
 			break;
+			system("pause");
+			system("cls");
 		}
 		case 6: {
 			string ced;
@@ -234,7 +252,8 @@ void Menu::obtenerMenu() {
 			cin >> ced;
 
 			cout << gym->clientePorInstructor(ced);
-
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 7: {
@@ -252,6 +271,8 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: El codigo de sucursal no fue encontrado." << endl;
 			}
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 8: {
@@ -270,7 +291,8 @@ void Menu::obtenerMenu() {
 			getline(cin, espe);
 
 			cout << gym->listarInstructoresPorEspecialidad(espe);
-
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 9: {
@@ -310,6 +332,8 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: Cliente con la cedula " << ced << " no encontrado." << endl;
 			}
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 10: {
@@ -330,7 +354,8 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: Cliente con la cedula " << ced << " no encontrado." << endl;
 			}
-
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 11: {
@@ -348,6 +373,8 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: El codigo de sucursal no fue encontrado." << endl;
 			}
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 12: {
@@ -367,6 +394,8 @@ void Menu::obtenerMenu() {
 			ejer1->setSeriesEjercicio(series);
 			bateria->insertarEjercicio(ejer1);
 			delete ejer1;
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 13:{
@@ -485,6 +514,8 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: Cliente con la cedula " << ced << " no encontrado." << endl;
 			}
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 14:{
@@ -567,6 +598,8 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: El codigo de sucursal no fue encontrado." << endl;
 			}
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 15:{
@@ -608,7 +641,8 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: Cliente con la cedula " << ced << " no encontrado." << endl;
 			}
-
+			system("pause");
+			system("cls");
 			break;
 		}
 		case 16: {
@@ -629,14 +663,16 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: Cliente con la cedula " << ced << " no encontrado." << endl;
 			}
-
+			system("pause");
+			system("cls");
 			break;
-		}
-		case 0: {
-			cout << "Saliendo del programa " << endl;
+			
 		}
 		default: {
 			cout << "Numero invalido " << endl;
+			system("pause");
+			system("cls");
+			break;
 		}
 		}
 

@@ -22,25 +22,7 @@ Sucursal::Sucursal() {
     canInstructores = 0;
     canClientes = 0;
 }
-Sucursal::Sucursal(int cod, int tel, string prov, string can, string correo) {
-    codigo = cod;
-    telefono = tel;
-    provincia = prov;
-    canton = can;
-    correoElectronico = correo;
-    instructores = new Instructor * [10];
-    clientes = new Cliente * [1000];
 
-    for (int i = 0; i < 10; ++i) {
-        instructores[i] = nullptr;
-    }
-    for (int i = 0; i < 1000; ++i) {
-        clientes[i] = nullptr;
-    }
-    for (int i = 0; i < 8; ++i) {
-        clases[i] = nullptr;
-    }
-}
 Sucursal::~Sucursal() {
     for (int i = 0; i < 8; ++i) {
         delete clases[i];
