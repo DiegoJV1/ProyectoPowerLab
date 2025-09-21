@@ -48,10 +48,16 @@
     <ClCompile Include="MedidasCorporales.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GrupoMuscular.cpp">
+    <ClCompile Include="Menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Menu.cpp">
+    <ClCompile Include="ClaseGrupal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Especialidad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Horario.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,10 +92,16 @@
     <ClInclude Include="MedidasCorporales.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GrupoMuscular.h">
+    <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Menu.h">
+    <ClInclude Include="ClaseGrupal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Especialidad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Horario.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

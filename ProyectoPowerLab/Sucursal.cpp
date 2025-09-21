@@ -141,7 +141,7 @@ string Sucursal::getClientesPorIns(string ced) {
 
     for (int i = 0; i < canClientes; i++) {
         if (clientes[i] != nullptr && clientes[i]->getCoach() != nullptr && clientes[i]->getCoach()->getCedulaCoach() == ced) {
-            ss << clientes[i]->toString() << endl;
+            ss << clientes[i]->toStringResumen() << endl;
         }
     }
     ss << "-----------------------------------" << endl;
@@ -188,7 +188,7 @@ string Sucursal:: clientesSucursal() {
     s << "\n--- Clientes (" << canClientes << " de 1000) ---" << endl;
     if (canClientes > 0) {
         for (int i = 0; i < canClientes; i++) {
-            s << clientes[i]->toString() << endl;
+            s << clientes[i]->toStringResumen() << endl;
         }
     }
     else {

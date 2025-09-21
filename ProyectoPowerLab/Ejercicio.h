@@ -16,7 +16,7 @@ public:
 	string getNombreEjercicio();
 	int getRepeticionesEjercicio();
 	int getSeriesEjercicio();
-	string getMusculo();
+	int getMusculo();
 	string toString();
 };
 

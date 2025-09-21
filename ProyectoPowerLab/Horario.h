@@ -3,17 +3,16 @@
 using namespace std;
 class Horario{
 private:
-	string dia;
-	int hora, minutos;
+	string dia, hora, minutos;
 public:
 	Horario();
-	Horario(string, int, int);
+	Horario(string, string, string);
 	void setDia(string);
-	void setHora(int);
-	void setMinutos(int);
+	void setHora(string);
+	void setMinutos(string);
 	string getDia();
-	int getHora();
-	int getMinutos();
+	string getHora();
+	string getMinutos();
 	string toString();
 };
 

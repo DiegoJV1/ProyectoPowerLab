@@ -1,31 +1,17 @@
 #pragma once
 #include <string>
-#include"GrupoMuscular.h"
+#include"Ejercicio.h"
 using namespace std;
 class Rutina{
 private:
-	GrupoMuscular* pecho;
-	GrupoMuscular* tricep;
-	GrupoMuscular* bicep;
-	GrupoMuscular* pierna;
-	GrupoMuscular* espalda;
-	GrupoMuscular* hombro;
+	Ejercicio** ejercicios;
+	int can, tam;
 
 public:
 	Rutina();
-	void setPecho(GrupoMuscular*);
-	void setTricep(GrupoMuscular*);
-	void setBicep(GrupoMuscular*);
-	void setPierna(GrupoMuscular*);
-	void setEspalda(GrupoMuscular*);
-	void setHombro(GrupoMuscular*);
+	~Rutina();
 
-	GrupoMuscular* getPecho();
-	GrupoMuscular* getTricep();
-	GrupoMuscular* getBicep();
-	GrupoMuscular* getPierna();
-	GrupoMuscular* getEspalda();
-	GrupoMuscular* getHombro();
+	void insertarEjercicio(Ejercicio*);
 
 	string toString();
 };

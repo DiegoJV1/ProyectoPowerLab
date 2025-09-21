@@ -2,10 +2,10 @@
 #include<sstream>
 Horario::Horario() {
 	dia = "Sin Definir";
-	hora = 0;
-	minutos = 0;
+	hora = "0";
+	minutos = "0";
 }
-Horario::Horario(string diaaux, int horaaux, int minutosaux) {
+Horario::Horario(string diaaux, string horaaux, string minutosaux) {
 	this->dia = diaaux;
 	this->hora = horaaux;
 	this->minutos = minutosaux;
@@ -13,19 +13,19 @@ Horario::Horario(string diaaux, int horaaux, int minutosaux) {
 void Horario::setDia(string diaaux) {
 	this->dia = diaaux;
 }
-void Horario::setHora(int horaaux) {
+void Horario::setHora(string horaaux) {
 	this->hora = horaaux;
 }
-void Horario::setMinutos(int minutosaux) {
+void Horario::setMinutos(string minutosaux) {
 	this->minutos = minutosaux;
 }
 string Horario::getDia() {
 	return dia;
 }
-int Horario::getHora() {
+string Horario::getHora() {
 	return hora;
 }
-int Horario::getMinutos() {
+string Horario::getMinutos() {
 	return minutos;
 }
 string Horario::toString() {

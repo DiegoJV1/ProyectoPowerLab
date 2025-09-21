@@ -79,7 +79,8 @@ string Instructor::toString() {
 	ss << "Cedula:" << cedulaCoach << endl;
 	ss << "Telefono:" << telefonoCoach << endl;
 	ss << "Correo Electronico:" << correoCoach << endl;
-	ss << "Fecha Nacimiento:" << fechaNacimientoCoach << endl;
+	ss << "Fecha Nacimiento:" << endl;
+	ss << fechaNacimientoCoach->toString() << endl;
 	ss << "Especialidades:"<< endl<<endl;
 	for (int i = 0; i < canEspecialidades; i++) {
 		ss<<especialidades[i]->toString() << endl;

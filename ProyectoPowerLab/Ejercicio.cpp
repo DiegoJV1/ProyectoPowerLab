@@ -65,11 +65,26 @@ int Ejercicio::getRepeticionesEjercicio() {
 int Ejercicio::getSeriesEjercicio() {
 	return series;
 }
-string Ejercicio::getMusculo() {
-	return musculo;
+int Ejercicio::getMusculo() {
+	if (musculo == "Pecho") {
+		return 1;
+	}
+	else if (musculo == "Tricep") {
+		return 2;
+	}
+	else if (musculo == "Bicep") {
+		return 3;
+	}
+	else if (musculo == "Pierna") {
+		return 4;
+	}
+	else if (musculo == "Espalda") {
+		return 5;
+	}
 }
 string Ejercicio::toString() {
 	stringstream ss;
 	ss << "Ejercicio:" << ejercicio<<"   "<<repeticiones<<"x"<<series << endl;
+	ss << "Musculo: " << musculo << endl;
 	return ss.str();
 }

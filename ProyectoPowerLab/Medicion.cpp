@@ -22,56 +22,35 @@ Medicion::Medicion() {
 	ingestaProteinaMinima = 0.0;
 	ejercita = "no";
 }
-Medicion::Medicion(double p, double a, int d, int m, int y) {
-	fechaMedicion = new Fecha(d, m, y);
-	peso = p;
-	altura = a;
-	porcenGrasa = 0.0;
-	porcenMusculo = 0.0;
-	porcenGrasaVisceral = 0.0;
-	edadMetabolica = 0.0;
-	IMC = 0.0;
-	clasificacionIMC = "Sin Definir";
-	tipoPaciente = "Paciente Regular";
-	vasosAgua = 0;
-	generoPaciente = "Sin definir";
-	ingestaProteinaMaxima = 0.0;
-	ingestaProteinaMinima = 0.0;
-	ejercita = "no";
-	medidas = nullptr; 
-}
 Medicion::~Medicion() {
 	delete fechaMedicion;
 	fechaMedicion = nullptr;
 	delete medidas;
 	medidas = nullptr;
 }
-
-
-
 void Medicion::setFechaMedicion(Fecha* fecha) {
-	fechaMedicion = fecha;
+	this->fechaMedicion = fecha;
 }
 void Medicion::setPeso(float p) {
-	peso = p;
+	this->peso = p;
 }
 void Medicion::setAltura(float a) {
-	altura = a;
+	this->altura = a;
 }
 void Medicion::setPorcenGrasa(float pg) {
-	porcenGrasa = pg;
+	this->porcenGrasa = pg;
 }
 void Medicion::setPorcenMusculo(float pm) {
-	porcenMusculo = pm;
+	this->porcenMusculo = pm;
 }
-void Medicion::setEdadMetabolica(float em) {
-	edadMetabolica = em;
+void Medicion::setEdadMetabolica(float edadmeta) {
+	this->edadMetabolica = edadmeta;
 }
 void Medicion::setPorcenGrasaVisceral(float pgv) {
-	porcenGrasaVisceral = pgv;
+	this->porcenGrasaVisceral = pgv;
 }
 void Medicion::setMedidas(MedidasCorporales* m) {
-	medidas = m;
+	this->medidas = m;
 }
 void Medicion::setGeneroPaciente(char gen) {
 	if (gen == 'H') {
@@ -205,7 +184,7 @@ string Medicion::toString() {
 	     s << "Sin fecha" << endl;
 	}
 	s << "¿Se ejercita? " << ejercita << endl;
-	s << "Genero: " << generoPaciente << endl;
+	s << "Genero: " <<generoPaciente << endl;
 	s << "Peso: " << peso << " kg" << endl;
 	s << "Altura: " << altura << " m" << endl;
 	s << "Porcentaje de Grasa: " << porcenGrasa << " %" << endl;
@@ -214,6 +193,7 @@ string Medicion::toString() {
 	s << "Grasa Visceral: " << porcenGrasaVisceral << " %" << endl;
 	calculoIMC();
 	s << "IMC: " << IMC << endl;
+	clasificacionPorIMC();
 	s << "Clasificación IMC: " << clasificacionIMC << endl;
 	s << "Tipo de Paciente: " << tipoPaciente << endl;
 	calculoVasosAgua();

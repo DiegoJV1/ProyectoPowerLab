@@ -100,7 +100,7 @@ string ClaseGrupal::toString() {
 	ss << coachClase->toString() << endl;
 	ss << "Clientes Inscritos: " << canInscritos << endl;
 	for (int i = 0; i < canInscritos; i++) {
-		ss << inscritos[i]->toString() << endl << endl;
+		ss << inscritos[i]->toStringResumen() << endl << endl;
 	}
 	return ss.str();
 }

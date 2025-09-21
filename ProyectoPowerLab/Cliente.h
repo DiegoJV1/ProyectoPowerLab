@@ -14,9 +14,13 @@ private:
 	Medicion** historialMedicion;
 	Rutina* rutinaCliente;
 	int contadorClases;
+	Fecha* fechaNacimientoCliente;
+	Fecha* fechaInscripcionCliente;
 public:
 	Cliente();
 	~Cliente();
+	void setFechaNacimientoCliente(Fecha*);
+	void setFechaInscripcionCliente(Fecha*);
 	void setNombreCliente(string);
 	void setCedulaCliente(string);
 	void setTelefonoCliente(string);
@@ -27,7 +31,7 @@ public:
 	void setContadorClases(int);
 
 	void insertarMedicion(Medicion*);
-	Medicion* buscarPorFecha(Fecha*);
+	void ordenarMedicionesPorFecha();
 	Medicion* buscarMasActual();
 
 	int getContadorClases();
@@ -35,12 +39,16 @@ public:
 	string getCedulaCliente();
 	string getTelefonoCliente();
 	string getCorreoCliente();
-	string getGeneroCliente();
+	char getGeneroCliente();
 	Instructor* getCoach();
 	Rutina* getRutinaCliente();
+	Fecha* getFechaNacimientoCliente();
+	Fecha* getFechaInscripcionCliente();
+
 
 	string toString();
-
+	string toStringRutina();
+	string toStringResumen();
 
 
 };

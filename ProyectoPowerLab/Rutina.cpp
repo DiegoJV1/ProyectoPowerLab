@@ -3,62 +3,61 @@
 #include<sstream>
 using namespace std;
 Rutina::Rutina() {
-	pecho = nullptr;
-	tricep = nullptr;
-	bicep = nullptr;
-	pierna = nullptr;
-	espalda = nullptr;
-	hombro = nullptr;
-}
-void Rutina::setPecho(GrupoMuscular* aux) {
-	this->pecho=aux;
-}
-void Rutina::setTricep(GrupoMuscular* aux) {
-	this->tricep = aux;
-}
-void Rutina::setBicep(GrupoMuscular* aux) {
-	this->bicep = aux;
-}
-void Rutina::setPierna(GrupoMuscular* aux) {
-	this->pierna = aux;
-}
-void Rutina::setEspalda(GrupoMuscular* aux) {
-	this->espalda = aux;
-}
-void Rutina:: setHombro(GrupoMuscular* aux) {
-	this->hombro = aux;
-}
+	can = 0;
+	tam = 100;
+	ejercicios =new Ejercicio * [tam];
 
-GrupoMuscular* Rutina::getPecho() {
-	return pecho;
+	for (int i = 0; i < tam; i++) {
+		ejercicios[i] = nullptr;
+	}
 }
-GrupoMuscular* Rutina::getTricep() {
-	return tricep;
+Rutina::~Rutina() {
+	for (int i = 0; i < tam; i++) {
+		delete ejercicios[i];
+	}
+	can = 0;
+	delete[] ejercicios;
 }
-GrupoMuscular* Rutina::getBicep() {
-	return bicep;
+void Rutina::insertarEjercicio(Ejercicio* aux) {
+	if (can < tam) {
+		ejercicios[can] = aux;
+		can++;
+	}
+	else {
+		cout << "ERROR-Rutina llena.";
+	}
 }
-GrupoMuscular* Rutina::getPierna() {
-	return pierna;
-}
-GrupoMuscular* Rutina::getEspalda() {
-	return espalda;
-}
-GrupoMuscular* Rutina::getHombro() {
-	return hombro;
-}
-
 string Rutina::toString() {
 	stringstream ss;
-	ss << "----Rutina de Ejercicios----" << endl;
-	ss << "Pecho y Tricep:" << endl;
-	ss << pecho->toString() << endl << endl;
-	ss << tricep->toString() << endl << endl;
-	ss << "Bicep:" << endl;
-	ss << bicep->toString() << endl << endl;
-	ss << "Piernas:" << endl;
-	ss << pierna->toString() << endl << endl;
-	ss << "Espalda:" << endl;
-	ss << espalda->toString() << endl << endl;
+	ss << "Pecho: " << endl;
+	for (int i = 0; i < can; i++) {
+		if (ejercicios[i]->getMusculo() == 1) {
+			ss << ejercicios[i]->toString()<<endl;
+		}
+	}
+	ss << "\nTricep: " << endl;
+	for (int i = 0; i < can; i++) {
+		if (ejercicios[i]->getMusculo() == 2) {
+			ss << ejercicios[i]->toString() << endl;
+		}
+	}
+	ss << "\nBicep: " << endl;
+	for (int i = 0; i < can; i++) {
+		if (ejercicios[i]->getMusculo() == 3) {
+			ss << ejercicios[i]->toString() << endl;
+		}
+	}
+	ss << "\nPierna: " << endl;
+	for (int i = 0; i < can; i++) {
+		if (ejercicios[i]->getMusculo() == 4) {
+			ss << ejercicios[i]->toString() << endl;
+		}
+	}
+	ss << "\n	Espalda: " << endl;
+	for (int i = 0; i < can; i++) {
+		if (ejercicios[i]->getMusculo() == 5) {
+			ss << ejercicios[i]->toString() << endl;
+		}
+	}
 	return ss.str();
 }

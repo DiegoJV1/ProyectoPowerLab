@@ -1,6 +1,7 @@
 #include "Menu.h"
 #include<iostream>
 #include"BateriaEjercicios.h"
+#include"Fecha.h"
 using namespace std;
 Menu::Menu(Gimnasio* aux) {
 	gym = aux;
@@ -29,9 +30,11 @@ void Menu::obtenerMenu() {
 		cout << "14. Creacion de clases grupales y visualizacion" << endl;
 		cout << "15. Matricula de cliente a una clase grupal. " << endl;
 		cout << "16. Lista de clases matriculadas por un cliente." << endl;
+		cout << "17.Visualizacion de ejercicios registrado." << endl;
 		cout << "0. Salir" << endl;
 		cout << "Seleccione una opcion: ";
 		cin >> opcion;
+		cin.ignore();
 		system("cls");
 		switch (opcion) {
 		case 1: {
@@ -45,8 +48,9 @@ void Menu::obtenerMenu() {
 
 			cout << "Ingrese el telefono: ";
 			cin >> telefono;
-			nuevaSucursal->setTelefono(telefono);
 			cin.ignore();
+			nuevaSucursal->setTelefono(telefono);
+			
 
 			cout << "Ingrese la provincia: ";
 			getline(cin, provincia);
@@ -87,9 +91,11 @@ void Menu::obtenerMenu() {
 				Instructor* coach = sucursal->getInstructor(cedulaInstructor);
 
 				if (coach != nullptr) {
+					int dia1, mes1, annio1, dia2, mes2, annio2;
 
 					cout << "--- Datos del nuevo cliente ---" << endl;
 					cout << "Ingrese el nombre del cliente: ";
+					cin.ignore();
 					getline(cin, nombreCliente);
 
 					cout << "Ingrese la cedula del cliente: ";
@@ -111,7 +117,27 @@ void Menu::obtenerMenu() {
 					nuevoCliente->setCorreoCliente(correoCliente);
 					nuevoCliente->setGeneroCliente(generoCliente);
 					nuevoCliente->setCoach(coach);
+					cout << "--- Fecha de Nacimiento ---" << endl;
+					cout << "Ingrese el dia: ";
+					cin >> dia1;
+					cout << "Ingrese el mes: ";
+					cin >> mes1;
+					cout << "Ingrese el anio: ";
+					cin >> annio1;
 
+					Fecha* fechaNacimientoCliente = new Fecha(dia1, mes1, annio1);
+					cout << "\n\n--- Fecha de Inscripcion ---" << endl;
+					cout << "Ingrese el dia: ";
+					cin >> dia2;
+					cout << "Ingrese el mes: ";
+					cin >> mes2;
+					cout << "Ingrese el anio: ";
+					cin >> annio2;
+
+					Fecha* fechaInscricionCliente = new Fecha(dia2, mes2, annio2);
+
+					nuevoCliente->setFechaInscripcionCliente(fechaInscricionCliente);
+					nuevoCliente->setFechaNacimientoCliente(fechaNacimientoCliente);
 					sucursal->setCliente(nuevoCliente);
 					cout << "\nCliente ingresado exitosamente." << endl;
 				}
@@ -184,6 +210,7 @@ void Menu::obtenerMenu() {
 					Especialidad* especialidad = new Especialidad();
 					especialidad->setNombreEspecialidad(opcionEspecialidad);
 					instructor->insertarEspecialidad(especialidad);
+					system("cls");
 
 				} while (opcionEspecialidad != 0);
 
@@ -241,9 +268,10 @@ void Menu::obtenerMenu() {
 			else {
 				cout << "ERROR: Cliente con la cedula " << ced << " no fue encontrado en ninguna sucursal." << endl;
 			}
-			break;
 			system("pause");
 			system("cls");
+			break;
+			
 		}
 		case 6: {
 			string ced;
@@ -296,8 +324,8 @@ void Menu::obtenerMenu() {
 			break;
 		}
 		case 9: {
-			string ced;
-			double peso, altura;
+			string ced, ejercita;
+			float peso, altura, grasaC, edadM, musculo, grasaV, pecho, cintura, muslo, cadera;
 			int dia, mes, anio;
 
 			cout << "--- Ingresar un registro de medicion a un cliente ---" << endl;
@@ -314,6 +342,28 @@ void Menu::obtenerMenu() {
 				cin >> peso;
 				cout << "Ingrese la altura (m): ";
 				cin >> altura;
+				cout << "Ingrese el porcentaje de grasa corporal: ";
+				cin >> grasaC;
+				cout << "Ingrese el porcentaje de grasa visceral: ";
+				cin >> grasaV;
+				cout << "Ingrese el porcentaje de masa muscular: ";
+				cin >> musculo;
+				cout << "Ingrese la edad metabolica: ";
+				cin >> edadM;
+				cout << "¿El cliente se ejercita?: ";
+				cin >> ejercita;
+
+				cout << "\n--- Medidas Corporales ---" << endl;
+				cout << "Pecho: ";
+				cin >> pecho;
+				cout << "Cadera: ";
+				cin >> cadera;
+				cout << "Cintura: ";
+				cin >> cintura;
+				cout << "Muslo: ";
+				cin >> muslo;
+
+				MedidasCorporales* medicionesCliente = new MedidasCorporales(cintura, pecho, cadera, muslo);
 
 				cout << "\n--- Fecha de la medicion ---" << endl;
 				cout << "Dia: ";
@@ -322,8 +372,19 @@ void Menu::obtenerMenu() {
 				cin >> mes;
 				cout << "Anio: ";
 				cin >> anio;
+				Fecha* FechaMedicion = new Fecha(dia, mes, anio);
 
-				Medicion* nuevaMedicion = new Medicion(peso, altura, dia, mes, anio);
+				Medicion* nuevaMedicion = new Medicion();
+				nuevaMedicion->setGeneroPaciente(clienteEncontrado->getGeneroCliente());
+				nuevaMedicion->setAltura(altura);
+				nuevaMedicion->setPeso(peso);
+				nuevaMedicion->setPorcenGrasa(grasaC);
+				nuevaMedicion->setPorcenGrasaVisceral(grasaV);
+				nuevaMedicion->setPorcenMusculo(musculo);
+				//nuevaMedicion->setEdadMetabolica(edadM);
+				nuevaMedicion->setEjercita(ejercita);
+				nuevaMedicion->setMedidas(medicionesCliente);
+				nuevaMedicion->setFechaMedicion(FechaMedicion);
 				clienteEncontrado->insertarMedicion(nuevaMedicion);
 
 				cout << "\nRegistro de medicion ingresado exitosamente." << endl;
@@ -378,24 +439,37 @@ void Menu::obtenerMenu() {
 			break;
 		}
 		case 12: {
-			cout << "--- Insertar Ejercicio a la Bateria de Ejrcicios ---" << endl;
-			int series, reps;
-			string nom;
-			cout << "Digite el nombre del ejercicio: " << endl;
-			getline(cin, nom);
-			cin.ignore();
-			cout << "Digite las repeticiones del ejercicio: " << endl;
-			cin >> reps;
-			cout << "Digite las series del ejercicio: " << endl;
-			cin >> series;
-			Ejercicio* ejer1 = new Ejercicio();
-			ejer1->setNombreEjercicio(nom);
-			ejer1->setRepeticionesEjercicio(reps);
-			ejer1->setSeriesEjercicio(series);
-			bateria->insertarEjercicio(ejer1);
-			delete ejer1;
-			system("pause");
-			system("cls");
+			string desicion = "si";
+			do{
+				cout << "--- Insertar Ejercicio a la Bateria de Ejrcicios ---" << endl;
+				int series, reps, musculo;
+				string nom;
+				cout << "Digite el nombre del ejercicio: " << endl;
+				getline(cin, nom);
+				cout << "Digite las repeticiones del ejercicio: " << endl;
+				cin >> reps;
+				cout << "Digite las series del ejercicio: " << endl;
+				cin >> series;
+				cout << "Digite el numero del musculo objetivo del ejercicio: " << endl;
+				cout << "1-Pecho" << endl;
+				cout << "2-Tricep" << endl;
+				cout << "3-Bicep" << endl;
+				cout << "4-Pierna" << endl;
+				cout << "5-Espalda" << endl;
+				cin >> musculo;
+				Ejercicio* ejer1 = new Ejercicio();
+				ejer1->setNombreEjercicio(nom);
+				ejer1->setRepeticionesEjercicio(reps);
+				ejer1->setSeriesEjercicio(series);
+				ejer1->setMusculo(musculo);
+				bateria->insertarEjercicio(ejer1);
+				cout << "Ejercicio insertado con exito." << endl;
+				cout << ejer1->toString() << endl;
+				cout << "Desea insertar otro ejercicio? " << endl;
+				cin >> desicion;
+				system("pause");
+				system("cls");
+			} while (desicion == "si" || desicion == "SI" || desicion == "Si" || desicion == "sI");
 			break;
 		}
 		case 13:{
@@ -406,6 +480,7 @@ void Menu::obtenerMenu() {
 			cout << "--- Creacion de Rutina ---" << endl;
 			cout << "Digite la cedula del cliente: " << endl;
 			cin >> ced;
+			cin.ignore();
 
 			Cliente* clienteEncontrado = gym->getCliente(ced);
 
@@ -415,46 +490,23 @@ void Menu::obtenerMenu() {
 				cout << clienteEncontrado->getRutinaCliente()->toString() << endl << endl;
 				cout << "¿Desea modificar la rutina del cliente? " << endl;
 				cin >> desicion;
+				cin.ignore();
 				if (desicion == "SI" || desicion == "si" || desicion == "Si" || desicion == "sI") {
 					Rutina* nuevaRutina = new Rutina();
-					GrupoMuscular* gpecho = new GrupoMuscular();
-					GrupoMuscular* gtricep = new GrupoMuscular();
-					GrupoMuscular* gbicep = new GrupoMuscular();
-					GrupoMuscular* gpierna = new GrupoMuscular();
-					GrupoMuscular* gespalda = new GrupoMuscular();
-
 					do {
 						cout << "Digite el nombre del ejercicio a insertar: " << endl;
-						cin >> nomejer;
+						getline(cin, nomejer);
 						if (bateria->buscarEjercicio(nomejer) != nullptr) {
 							Ejercicio* ejer2 = bateria->buscarEjercicio(nomejer);
-							if (ejer2->getMusculo() == "Pecho") {
-								gpecho->insertarEjercicio(ejer2);
-							}
-							else if (ejer2->getMusculo() == "Tricep") {
-								gtricep->insertarEjercicio(ejer2);
-							}
-							else if (ejer2->getMusculo() == "Bicep") {
-								gbicep->insertarEjercicio(ejer2);
-							}
-							else if (ejer2->getMusculo() == "Pierna") {
-								gpierna->insertarEjercicio(ejer2);
-							}
-							else if (ejer2->getMusculo() == "Espalda") {
-								gespalda->insertarEjercicio(ejer2);
-							}
+							nuevaRutina->insertarEjercicio(ejer2);
 						}
 						else {
 							cout << "ERROR: El ejercicio no fue encontrado en la bateria de ejercicios." << endl;
 						}
 						cout << "¿Desea insertar otro ejercicio?" << endl;
 						cin >> desicionEjercicio;
+						cin.ignore();
 					} while (desicionEjercicio == "SI" || desicionEjercicio == "si" || desicionEjercicio == "Si" || desicionEjercicio == "sI");
-					nuevaRutina->setPecho(gpecho);
-					nuevaRutina->setTricep(gtricep);
-					nuevaRutina->setBicep(gbicep);
-					nuevaRutina->setEspalda(gespalda);
-					nuevaRutina->setPierna(gpierna);
 					clienteEncontrado->setRutina(nuevaRutina);
 					system("pause");
 					system("cls");
@@ -466,49 +518,25 @@ void Menu::obtenerMenu() {
 			else if (clienteEncontrado != nullptr && clienteEncontrado->getRutinaCliente() == nullptr) {
 				cout << "\nCliente encontrado. Creacion de Rutina..." << endl;
 				Rutina* nuevaRutina = new Rutina();
-				GrupoMuscular* gpecho = new GrupoMuscular();
-				GrupoMuscular* gtricep = new GrupoMuscular();
-				GrupoMuscular* gbicep = new GrupoMuscular();
-				GrupoMuscular* gpierna = new GrupoMuscular();
-				GrupoMuscular* gespalda = new GrupoMuscular();
-
 				do {
 					cout << "Digite el nombre del ejercicio a insertar: " << endl;
-					cin >> nomejer;
+					getline(cin, nomejer);
 					if (bateria->buscarEjercicio(nomejer) != nullptr) {
 						Ejercicio* ejer2 = bateria->buscarEjercicio(nomejer);
-						if (ejer2->getMusculo() == "Pecho") {
-							gpecho->insertarEjercicio(ejer2);
-						}
-						else if (ejer2->getMusculo() == "Tricep") {
-							gtricep->insertarEjercicio(ejer2);
-						}
-						else if (ejer2->getMusculo() == "Bicep") {
-							gbicep->insertarEjercicio(ejer2);
-						}
-						else if (ejer2->getMusculo() == "Pierna") {
-							gpierna->insertarEjercicio(ejer2);
-						}
-						else if (ejer2->getMusculo() == "Espalda") {
-							gespalda->insertarEjercicio(ejer2);
-						}
+						nuevaRutina->insertarEjercicio(ejer2);
 					}
 					else {
 						cout << "ERROR: El ejercicio no fue encontrado en la bateria de ejercicios." << endl;
 					}
 					cout << "¿Desea insertar otro ejercicio?" << endl;
 					cin >> desicionEjercicio;
+					cin.ignore();
 				} while (desicionEjercicio == "SI" || desicionEjercicio == "si" || desicionEjercicio == "Si" || desicionEjercicio == "sI");
-				nuevaRutina->setPecho(gpecho);
-				nuevaRutina->setTricep(gtricep);
-				nuevaRutina->setBicep(gbicep);
-				nuevaRutina->setEspalda(gespalda);
-				nuevaRutina->setPierna(gpierna);
 				clienteEncontrado->setRutina(nuevaRutina);
 				system("pause");
 				system("cls");
 				cout << "Nueva Rutina del Cliente: " << endl << endl;
-				cout << clienteEncontrado->getRutinaCliente()->toString() << endl;
+				cout << clienteEncontrado->toStringRutina() << endl;
 
 			}
 			else {
@@ -524,18 +552,19 @@ void Menu::obtenerMenu() {
 			cout << "--- Creacion de Clase Grupal ---" << endl;
 			cout << "Digite el codigo de la sucursal: ";
 			cin >> codSucursal;
+			cin.ignore();
 
 			Sucursal* sucursal = gym->getSucursal(codSucursal);
 
 			if (sucursal != nullptr) {
-				string nom, cod, salon, ced, dia;
-				int capacidad, opcion, mins, hora;
+				string nom, cod, salon, ced, dia, mins, hora;
+				int capacidad, opcion;
 				Especialidad* tiposeleccionado = new Especialidad();
 				Instructor* coach = nullptr;
 				Horario* horario = new Horario();
 				ClaseGrupal* nuevaClase = new ClaseGrupal();
 				cout << "Digite el nombre de clase grupal: " << endl;
-				cin >> nom;
+				getline(cin, nom);
 				nuevaClase->setNombreClaseGrupal(nom);
 				cout << "Digite el codigo de clase grupal: " << endl;
 				cin >> cod;
@@ -573,6 +602,7 @@ void Menu::obtenerMenu() {
 						cout << "ERROR-Entrenador no encontrado o no posee la especialidad para dar la clase." << endl;
 					}
 					else {
+						delete coach;
 						coach = sucursal->getInstructor(ced);
 						nuevaClase->setCoachClase(coach);
 					}
@@ -586,6 +616,7 @@ void Menu::obtenerMenu() {
 				horario->setDia(dia);
 				horario->setHora(hora);
 				horario->setMinutos(mins);
+				nuevaClase->setHorario(horario);
 				sucursal->setClaseGrupal(nuevaClase);
 				system("cls");
 				cout << "Clase Grupal Creada: " << endl;
@@ -668,8 +699,8 @@ void Menu::obtenerMenu() {
 			break;
 			
 		}
-		default: {
-			cout << "Numero invalido " << endl;
+		case 17: {
+			cout << bateria->toString() << endl << endl;
 			system("pause");
 			system("cls");
 			break;
