@@ -12,6 +12,11 @@ Gimnasio::Gimnasio() {
 		sucursales[i] = nullptr;
 	}
 }
+Gimnasio::~Gimnasio() {
+	for (int i = 0; i < can; i++) delete sucursales[i];
+	delete[] sucursales;
+}
+
 void Gimnasio::setNombre(string aux) {
 	this->nombre = aux;
 }

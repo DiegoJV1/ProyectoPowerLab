@@ -9,6 +9,7 @@ private:
 	string nombre;
 public:
 	Gimnasio();
+	~Gimnasio();
 	void setNombre(string);
 	string getNombre();
 	void insertarSucursal(Sucursal*);
