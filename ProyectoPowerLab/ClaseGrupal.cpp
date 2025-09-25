@@ -23,7 +23,7 @@ ClaseGrupal::~ClaseGrupal() {
 	canInscritos = 0;
 }
 bool ClaseGrupal::insertarCliente(Cliente* aux) {
-	if (canInscritos < capacidad && aux->getContadorClases()<=3) {
+	if (canInscritos < capacidad && aux->getContadorClases()<3) {
 		inscritos[canInscritos] = aux;
 		canInscritos++;
 		aux->setContadorClases(aux->getContadorClases() + 1);

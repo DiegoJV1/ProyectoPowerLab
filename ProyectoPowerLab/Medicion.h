@@ -29,7 +29,7 @@ public:
 	void setEjercita(string);
 	
 	void calculoIMC();
-	void clasificacionPorIMC();
+	string clasificacionPorIMC();
 	void calculoVasosAgua();
 	void calculoIngestaProteina();
 

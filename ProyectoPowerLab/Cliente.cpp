@@ -108,19 +108,9 @@ void Cliente:: ordenarMedicionesPorFecha() {
 	}
 }
 Medicion* Cliente::buscarMasActual() {
-	Medicion* actual = historialMedicion[0];
-	for (int i = 0; i < can; i++) {
-		if (historialMedicion[i]->getFecha()->getAnnio() > actual->getFecha()->getAnnio()){
-			actual = historialMedicion[i];
-		}
-		else if (historialMedicion[i]->getFecha()->getAnnio()==actual->getFecha()->getAnnio() && historialMedicion[i]->getFecha()->getMes() > actual->getFecha()->getMes()) {
-			actual = historialMedicion[i];
-		}
-		else if (historialMedicion[i]->getFecha()->getAnnio() == actual->getFecha()->getAnnio() && historialMedicion[i]->getFecha()->getMes() == actual->getFecha()->getMes() && historialMedicion[i]->getFecha()->getDia() > actual->getFecha()->getDia()) {
-			actual = historialMedicion[i];
-		}
-	}
-	return actual;
+	ordenarMedicionesPorFecha();
+	return historialMedicion[can - 1];
+	
 }
 
 int Cliente::getContadorClases() {

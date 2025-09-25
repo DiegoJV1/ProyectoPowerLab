@@ -210,11 +210,13 @@ string Sucursal::clasificacionPorIMC() {
     int canOL = 0;
     int canOME = 0;
     int canOMO = 0;
+    int canFR = 0;
 
     ss << "Delgadez Severa:" << endl << endl;
     for (int i = 0; i < canClientes; i++) {
-        if (clientes[i]->buscarMasActual()->getClasificacionIMC() == "Delgadez Severa") {
-            ss << clientes[i]->toString() << endl << endl;
+        clientes[i]->buscarMasActual()->calculoIMC();
+        if (clientes[i]->buscarMasActual()->clasificacionPorIMC() == "Delgadez Severa") {
+            ss << clientes[i]->toStringResumen() << endl << endl;
             canDS++;
         }
     }
@@ -222,8 +224,9 @@ string Sucursal::clasificacionPorIMC() {
     //------------------------------------------------------------------------------------------
     ss << "Delgadez Moderada:" << endl << endl;
     for (int i = 0; i < canClientes; i++) {
-        if (clientes[i]->buscarMasActual()->getClasificacionIMC() == "Delgadez Moderada") {
-            ss << clientes[i]->toString() << endl << endl;
+        clientes[i]->buscarMasActual()->calculoIMC();
+        if (clientes[i]->buscarMasActual()->clasificacionPorIMC() == "Delgadez Moderada") {
+            ss << clientes[i]->toStringResumen() << endl << endl;
             canDM++;
         }
     }
@@ -231,8 +234,9 @@ string Sucursal::clasificacionPorIMC() {
     //------------------------------------------------------------------------------------------
     ss << "Delgadez Leve:" << endl << endl;
     for (int i = 0; i < canClientes; i++) {
-        if (clientes[i]->buscarMasActual()->getClasificacionIMC() == "Delgadez Leve") {
-            ss << clientes[i]->toString() << endl << endl;
+        clientes[i]->buscarMasActual()->calculoIMC();
+        if (clientes[i]->buscarMasActual()->clasificacionPorIMC() == "Delgadez Leve") {
+            ss << clientes[i]->toStringResumen() << endl << endl;
             canDL++;
         }
     }
@@ -240,8 +244,9 @@ string Sucursal::clasificacionPorIMC() {
     //------------------------------------------------------------------------------------------
     ss << "Normal:" << endl << endl;
     for (int i = 0; i < canClientes; i++) {
-        if (clientes[i]->buscarMasActual()->getClasificacionIMC() == "Normal") {
-            ss << clientes[i]->toString() << endl << endl;
+        clientes[i]->buscarMasActual()->calculoIMC();
+        if (clientes[i]->buscarMasActual()->clasificacionPorIMC() == "Normal") {
+            ss << clientes[i]->toStringResumen() << endl << endl;
             canN++;
         }
     }
@@ -249,8 +254,9 @@ string Sucursal::clasificacionPorIMC() {
     //------------------------------------------------------------------------------------------
     ss << "Pre-Obesidad:" << endl << endl;
     for (int i = 0; i < canClientes; i++) {
-        if (clientes[i]->buscarMasActual()->getClasificacionIMC() == "Pre-Obesidad") {
-            ss << clientes[i]->toString() << endl << endl;
+        clientes[i]->buscarMasActual()->calculoIMC();
+        if (clientes[i]->buscarMasActual()->clasificacionPorIMC() == "Pre-Obesidad") {
+            ss << clientes[i]->toStringResumen() << endl << endl;
             canPO++;
         }
     }
@@ -258,8 +264,9 @@ string Sucursal::clasificacionPorIMC() {
     //------------------------------------------------------------------------------------------
     ss << "Obesidad Leve:" << endl << endl;
     for (int i = 0; i < canClientes; i++) {
-        if (clientes[i]->buscarMasActual()->getClasificacionIMC() == "Obesidad Leve") {
-            ss << clientes[i]->toString() << endl << endl;
+        clientes[i]->buscarMasActual()->calculoIMC();
+        if (clientes[i]->buscarMasActual()->clasificacionPorIMC() == "Obesidad Leve") {
+            ss << clientes[i]->toStringResumen() << endl << endl;
             canOL++;
         }
     }
@@ -267,8 +274,9 @@ string Sucursal::clasificacionPorIMC() {
     //------------------------------------------------------------------------------------------
     ss << "Obesidad Media:" << endl << endl;
     for (int i = 0; i < canClientes; i++) {
-        if (clientes[i]->buscarMasActual()->getClasificacionIMC() == "Obesidad Media") {
-            ss << clientes[i]->toString() << endl << endl;
+        clientes[i]->buscarMasActual()->calculoIMC();
+        if (clientes[i]->buscarMasActual()->clasificacionPorIMC() == "Obesidad Media") {
+            ss << clientes[i]->toStringResumen() << endl << endl;
             canOME++;
         }
     }
@@ -276,12 +284,22 @@ string Sucursal::clasificacionPorIMC() {
     //------------------------------------------------------------------------------------------
     ss << "Obesidad Morbida:" << endl << endl;
     for (int i = 0; i < canClientes; i++) {
-        if (clientes[i]->buscarMasActual()->getClasificacionIMC() == "Obesidad Morbida") {
-            ss << clientes[i]->toString() << endl << endl;
+        clientes[i]->buscarMasActual()->calculoIMC();
+        if (clientes[i]->buscarMasActual()->clasificacionPorIMC() == "Obesidad Morbida") {
+            ss << clientes[i]->toStringResumen() << endl << endl;
             canOMO++;
         }
     }
-    ss << "Cantida de Clientes: " << canOMO << endl << endl;
+    //------------------------------------------------------------------------------------------
+    ss << "Fuera de Rango:" << endl << endl;
+    for (int i = 0; i < canClientes; i++) {
+        clientes[i]->buscarMasActual()->calculoIMC();
+        if (clientes[i]->buscarMasActual()->clasificacionPorIMC() == "Fuera de Rango") {
+            ss << clientes[i]->toStringResumen() << endl << endl;
+            canFR++;
+        }
+    }
+    ss << "Cantida de Clientes: " << canFR << endl << endl;
     //------------------------------------------------------------------------------------------
     return ss.str();
 }

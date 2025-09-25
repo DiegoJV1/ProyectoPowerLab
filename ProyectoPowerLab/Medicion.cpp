@@ -84,40 +84,39 @@ void Medicion::calculoVasosAgua() {
 	vasosAgua = peso / 7;
 }
 
-void Medicion::clasificacionPorIMC() {
+string Medicion::clasificacionPorIMC() {
 	calculoIMC();
 	if (IMC < 16.00) {
-		clasificacionIMC = "Delgadez severa";
+		return clasificacionIMC = "Delgadez severa";
 	}
-	else if (IMC <= 16.99) {
-		clasificacionIMC = "Delgadez moderada";
+	else if (IMC >= 16.01 && IMC <= 16.99) {
+		return clasificacionIMC = "Delgadez moderada";
 
 	}
-	else if (IMC <= 18.49) {
-		clasificacionIMC = "Delgadez leve";
+	else if (IMC >= 17.00 && IMC <= 18.49) {
+		return clasificacionIMC = "Delgadez leve";
 
 	}
-	else if (IMC <= 24.99) {
-		clasificacionIMC = "Normal";
+	else if (IMC >= 18.50 && IMC <= 24.99) {
+		return clasificacionIMC = "Normal";
 
 	}
-	else if (IMC <= 29.99) {
-		clasificacionIMC = "Pre-Obesidad";
+	else if (IMC >= 25.00 && IMC <= 29.99) {
+		return clasificacionIMC = "Pre-Obesidad";
 
 	}
-	else if (IMC <= 34.99) {
-		clasificacionIMC = "Obesidad leve";
+	else if (IMC >= 30.00 && IMC <= 34.99) {
+		return clasificacionIMC = "Obesidad leve";
 
 	}
-	else if (IMC < 39.99) {
-		clasificacionIMC = "Obesidad media";
+	else if (IMC >= 35.00 && IMC < 39.99) {
 		tipoPaciente = "Paciente de alto riesgo";
+		return clasificacionIMC = "Obesidad media";
 
 	}
-	else {
-		clasificacionIMC = "Obesidad morbida";
+	else if(IMC >= 40.00) {
 		tipoPaciente = "Paciente de alto riesgo";
-
+		return clasificacionIMC = "Obesidad morbida";
 	}
 }
 
@@ -149,6 +148,7 @@ float Medicion::getIMC() {
 	return IMC;
 }
 string Medicion::getClasificacionIMC() {
+	calculoIMC();
 	return clasificacionIMC;
 }
 MedidasCorporales* Medicion::getMedidas() {

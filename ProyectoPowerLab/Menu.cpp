@@ -3,7 +3,8 @@
 #include"BateriaEjercicios.h"
 #include"Fecha.h"
 using namespace std;
-Menu::Menu(Gimnasio* aux) {
+Menu::Menu(Gimnasio* aux, BateriaEjercicios* auxb) {
+	bateria = auxb;
 	gym = aux;
 }
 Menu::~Menu() {
@@ -11,7 +12,7 @@ Menu::~Menu() {
 }
 void Menu::obtenerMenu() {
 	int opcion = 1;
-	BateriaEjercicios* bateria = new BateriaEjercicios();
+	
 	do {
 		cout << "--- Menu de Gimnasio ---" << endl;
 		cout << "1. Ingresar Sucursal" << endl;
@@ -388,6 +389,7 @@ void Menu::obtenerMenu() {
 				clienteEncontrado->insertarMedicion(nuevaMedicion);
 
 				cout << "\nRegistro de medicion ingresado exitosamente." << endl;
+				cout << nuevaMedicion->toString() << endl << endl;
 
 			}
 			else {
@@ -655,10 +657,14 @@ void Menu::obtenerMenu() {
 					cout << "Digite el codigo de la clase grupal: ";
 					cin >> codClase;
 					if (sucursal->getClaseGrupal(codClase) != nullptr){
-						sucursal->getClaseGrupal(codClase)->insertarCliente(clienteEncontrado);
-						cout << "Cliente registrado!" << endl;
-						cout << "Lista de verificacion de clientes registrados: " << endl;
-						cout << sucursal->getClaseGrupal(codClase)->toString() << endl << endl;
+						if (sucursal->getClaseGrupal(codClase)->insertarCliente(clienteEncontrado) == true) {
+							cout << "Cliente registrado!" << endl;
+							cout << "Lista de verificacion de clientes registrados: " << endl;
+							cout << sucursal->getClaseGrupal(codClase)->toString() << endl << endl;
+						}
+						else {
+							cout << "ERROR-No se le pueden asignar mas clases al cliente!" << endl;
+						}
 					}
 					else {
 						cout << "ERROR: El codigo de la clase grupal no fue encontrado." << endl;
